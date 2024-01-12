@@ -13,5 +13,5 @@
 
 ### Hanna 
 
-- What you have done
+- Joined github repository
 
