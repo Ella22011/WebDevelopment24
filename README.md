@@ -14,6 +14,7 @@
 ### Hanna 
 
 - Joined github repository
+- Creates donate page
 
 
 
