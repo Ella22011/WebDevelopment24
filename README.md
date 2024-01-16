@@ -4,11 +4,14 @@
 
 ### Ella 
 - Created github repository for team
+-Homepage
+-About us page
 
 
 ### Jemina 
 
 - Joined github repository
+- Going to create Cats-page
 
 
 ### Hanna 
