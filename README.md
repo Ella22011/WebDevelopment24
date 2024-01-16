@@ -4,6 +4,8 @@
 
 ### Ella 
 - Created github repository for team
+-Homepage
+-About us page
 
 
 ### Jemina 
