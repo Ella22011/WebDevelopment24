@@ -8,12 +8,12 @@
 
 ### Jemina 
 
-- What you have done
+- Joined github repository
 
 
 ### Hanna 
 
-- What you have done
+- Joined github repository
 
 
 
