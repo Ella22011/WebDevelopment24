@@ -3,7 +3,7 @@
 ## About our website 
 
 ### Ella 
-- Created github repository
+- Created github repository for team
 
 
 ### Jemina 
@@ -15,3 +15,6 @@
 
 - What you have done
 
+
+
+[Link to our layout](https//...) 
