@@ -1,0 +1,64 @@
+body {
+    background: #fbedf4;
+    display: flex;
+    font-family: 'Inter', Verdana, Geneva, Tahoma, sans-serif;
+    flex-direction: column;
+    margin: 0;
+}
+
+.homepage {
+    display: flex;
+    flex-direction: row;
+}
+
+.image1 {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+
+}
+
+#main-nav {
+    background: #fbedf4;
+    flex: 1;
+    flex-direction: row;
+}
+
+#C1 {
+    -ms-flex-align: center;
+    margin: auto;
+}
+
+a:link {
+    color: rgb(17, 16, 18);
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:visited {
+    color: rgb(217, 53, 165);
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(255, 82, 243);
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+a:active {
+    color: yellow;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .main {
+        flex-direction: column;
+    }
+
+    .content>article {
+        min-height: auto;
+    }
+}
