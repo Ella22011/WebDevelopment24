@@ -1,5 +1,16 @@
 body{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
     font-family: 'Inter', Verdana, Geneva, Tahoma, sans-serif;
+}
+.footer {
+    background: #fbedf4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
 }
 
 #main-nav {
