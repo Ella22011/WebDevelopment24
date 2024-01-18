@@ -11,7 +11,8 @@
 ### Jemina 
 
 - Joined github repository
-- Going to create Cats-page
+- Created cats-page
+- Added pictures of cats
 
 
 ### Hanna 
