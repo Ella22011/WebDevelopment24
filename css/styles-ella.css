@@ -1,15 +1,14 @@
-body{
+body {
     display: flex;
     flex-direction: column;
     height: 100%;
     margin: 0;
     font-family: 'Inter', Verdana, Geneva, Tahoma, sans-serif;
 }
+
 .footer {
     background: #fbedf4;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
     height: 10vh;
 }
 
@@ -22,7 +21,8 @@ body{
 }
 
 #main-nav form {
-    margin-left: auto; }
+    margin-left: auto;
+}
 
 #main-nav ul {
     list-style: none;
@@ -45,12 +45,10 @@ body{
 }
 
 .homepage {
-    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     padding: 20px;
-    height: 100vh;
 }
 
 #C1 {
@@ -60,13 +58,17 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
 }
 
 .image1 {
     margin: 20px 0;
     max-width: 40%;
-    height: auto; 
+    height: auto;
+}
+
+.websiteDivider {
+    width: 100%;
+    height: auto;
 }
 
 @media (max-width: 600px) {
