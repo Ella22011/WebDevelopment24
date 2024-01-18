@@ -45,6 +45,12 @@ body{
     padding: 50px;
 }
 
+.header h1{
+    font-weight: bold;
+    font-family: 'Inter', Verdana, Geneva, Tahoma, sans-serif;
+    font-size: x-large;
+}
+
 .card-title{
     font-weight: bold;
 }
@@ -53,12 +59,6 @@ body{
     padding: 40px;
 }
 
-.card-image-top{
-    margin: 20px 0;
-    max-width: 40%;
-    height: auto;
-    
-}
 
 .footer {
     background: #fbedf4;
