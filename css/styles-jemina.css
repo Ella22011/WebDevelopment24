@@ -52,3 +52,16 @@ body{
 .card{
     padding: 40px;
 }
+
+.card-image-top{
+    margin: 20px 0;
+    max-width: 40%;
+    height: auto;
+    
+}
+
+.footer {
+    background: #fbedf4;
+    text-align: center;
+    height: 10vh;
+}
