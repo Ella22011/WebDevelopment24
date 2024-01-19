@@ -1,5 +1,10 @@
 body{
     font-family: 'Inter', Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 #main-nav {
@@ -35,9 +40,10 @@ body{
 }
 
 .catspage{
-    display: flex;
+    flex: 1;
     justify-content: center;
-    padding: 40px;
+    padding: 20px;
+    min-height: 100vh;
 
 }
 
@@ -50,6 +56,12 @@ body{
     font-weight: bold;
     font-family: 'Inter', Verdana, Geneva, Tahoma, sans-serif;
     font-size: x-large;
+    margin-bottom: 40px;
+}
+
+.header p{
+    padding: 20px;
+    background-color:  #fbedf4;
 }
 
 .card-title{
