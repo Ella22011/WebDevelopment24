@@ -11,7 +11,8 @@ body{
 }
 
 #main-nav form {
-    margin-left: auto; }
+    margin-left: auto;
+}
 
 #main-nav ul {
     list-style: none;
@@ -42,7 +43,13 @@ body{
 
 .header{
     text-align: center;
-    padding: 50px;
+    padding: 40px;
+}
+
+.header h1{
+    font-weight: bold;
+    font-family: 'Inter', Verdana, Geneva, Tahoma, sans-serif;
+    font-size: x-large;
 }
 
 .card-title{
@@ -51,4 +58,11 @@ body{
 
 .card{
     padding: 40px;
+}
+
+
+.footer {
+    background: #fbedf4;
+    text-align: center;
+    height: 10vh;
 }
