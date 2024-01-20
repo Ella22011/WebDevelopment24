@@ -1,19 +1,20 @@
 body {
+    background-color: #F1EAFF;
     display: flex;
     flex-direction: column;
     height: 100%;
     margin: 0;
     font-family: 'Inter', Verdana, Geneva, Tahoma, sans-serif;
+    color: #4a0686;
 }
 
 .footer {
-    background: #fbedf4;
     text-align: center;
     height: 10vh;
 }
 
 #main-nav {
-    background: #fbedf4;
+    background: #DCBFFF;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -41,6 +42,10 @@ body {
 
 #main-nav a:hover {
     color: rgb(255, 82, 243);
+    text-decoration: underline;
+}
+#main-nav a:visited {
+    color: rgb(99, 0, 92);
     text-decoration: underline;
 }
 
