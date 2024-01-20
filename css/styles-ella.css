@@ -56,7 +56,7 @@ body {
     padding: 20px;
 }
 
-#C1 {
+#C1, #C2 {
     text-align: center;
     max-width: 800px;
     margin: auto;
