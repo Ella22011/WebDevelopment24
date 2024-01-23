@@ -107,7 +107,8 @@ body {
 }
 
 @media (max-width: 600px) {
-    #main-nav {
+    #main-nav
+    {
         flex-direction: column;
         align-items: flex-start;
     }
@@ -125,4 +126,5 @@ body {
         margin-right: 0;
         margin-bottom: 10px;
     }
+
 }
