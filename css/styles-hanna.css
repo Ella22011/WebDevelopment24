@@ -51,8 +51,24 @@ body {
     flex-direction: column;
     padding: 20px;
 }
+#p1 {
+    text-align: center;
+    max-width: 800px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-
+#p2 { 
+    text-align: start;
+    max-width: 600px;
+    margin: auto;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 20px;
+}
 .Box {
     background-color: #fbedf4;
     padding: 15px;
@@ -61,11 +77,17 @@ body {
     box-shadow: 0 0 8px;
     max-width: 500px;
     text-align: center;
+    margin-bottom: 20px;
 
 }
+.Box:first-child {
+    margin-top: 20px; /* Add top margin to the first form */
+}
 
-
-
+.websiteDivider {
+    width: 100%;
+    height: auto;
+}
 .footer {
     text-align: center;
     height: 10vh;
