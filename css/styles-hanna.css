@@ -81,7 +81,7 @@ body {
 
 }
 .Box:first-child {
-    margin-top: 20px; /* Add top margin to the first form */
+    margin-top: 20px;
 }
 
 .websiteDivider {
