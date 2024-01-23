@@ -8,6 +8,7 @@ body {
     color: #4a0686;
 }
 
+
 #main-nav {
     background: #DCBFFF;
     display: flex;
@@ -42,4 +43,30 @@ body {
 #main-nav a:visited {
     color: rgb(99, 0, 92);
     text-decoration: underline;
+}
+
+.donatePage {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+
+.Box {
+    background-color: #fbedf4;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 8px;
+    max-width: 500px;
+    text-align: center;
+
+}
+
+
+
+.footer {
+    text-align: center;
+    height: 10vh;
 }
