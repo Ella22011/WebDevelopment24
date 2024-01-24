@@ -3,23 +3,18 @@
 ## About our website 
 
 ### Ella 
-- Created github repository for team
--Homepage
--About us page
+- Created github repository for the team
+-Created Homepage (index) and About us page
 
 
 ### Jemina 
 
 - Joined github repository
 - Created cats-page
-- Added pictures of cats
 
 
 ### Hanna 
 
 - Joined github repository
-- Creates donate page
+- Created donate page
 
-
-
-[Link to our layout](https//...) 
