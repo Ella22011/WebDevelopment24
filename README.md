@@ -4,7 +4,7 @@
 
 ### Ella 
 - Created github repository for the team
--Created Homepage (index) and About us page
+- Created Homepage (index) and About us page
 
 
 ### Jemina 
