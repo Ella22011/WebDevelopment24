@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,72 +11,75 @@
 </head>
 
 <body>
- <header>
-     <nav id="main-nav">
-        <ul>
-            <li>
-                <a class="navbar-brand" href="../index.html">
-                    <img src="../images/catLogo.png" alt="logo" height="50" width="auto">
-                </a>
-            </li>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="../pages/cats.html">Cats</a></li>
-            <li><a href="../pages/donate.html">Donate</a></li>
-            <li><a href="../pages/about.html">About us</a></li>
-        </ul>
-        <form>
-            <input type="text" placeholder="Search" aria-label="Search">
-            <button type="submit">Search</button>
+    <header>
+        <nav id="main-nav">
+            <ul>
+                <li>
+                    <a class="navbar-brand" href="../index.html">
+                        <img src="../images/catLogo.png" alt="logo" height="50" width="auto">
+                    </a>
+                </li>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../pages/cats.html">Cats</a></li>
+                <li><a href="../pages/donate.html">Donate</a></li>
+                <li><a href="../pages/about.html">About us</a></li>
+            </ul>
+            <form>
+                <input type="text" placeholder="Search" aria-label="Search">
+                <button type="submit">Search</button>
+            </form>
+        </nav>
+    </header>
+
+
+    <main class="donatePage">
+        <article id="p1">
+            <h1> Donate</h1>
+            <p>
+                Donations are our main way to get money to provide for cats. No matter how small or big, we appreciate
+                it
+                more than anything. You can donate once or become a monthly helper by signing up.
+            </p>
+            <p>
+                Below you can find a form, where you can fill your informations and amount of your donation.
+            </p>
+
+        </article>
+
+
+        <form method="post" action="#" class="Box" id="p2">
+            <h4>Donate</h4>
+            First Name: <input type="text" name="fName"><br>
+            Last Name: <input type="text" name="lName"><br>
+            Email Address: <input type="email" name="email"><br>
+            Donation Amount(€): <input type="number" name="donationAmount" step="0.01"><br>
+            <input type="submit" value="Verify your payment"><br>
+
+
         </form>
-     </nav>
- </header>
-       
 
- <main class="donatePage">     
-     <article id="p1">
-        <h1> Donate</h1>
-        <p>
-            Donations are our main way to get money to provide for cats. No matter how small or big, we appreciate it
-            more than anything. You can donate once or become a monthly helper by signing up.
-        </p>
-        <p>
-            Below you can find a form, where you can fill your informations and amount of your donation.
-        </p>
+        <form method="post" action="#" class="Box" id="p2">
+            <h4>Become a monthly helper</h4>
+            First Name: <input type="text" name="fName"><br>
+            Last Name: <input type="text" name="lName"><br>
+            Email Address: <input type="email" name="email"><br>
+            Monthly Donation Amount(€): <input type="number" name="monthlyDonation" step="0.01"><br>
+            <label for="paymentMethod">Payment Method:</label>
+            <select id="paymentMethod" name="paymentMethod">
+                <option value="paypal">MobilePay</option>
+                <option value="creditCard">Credit Card</option>
+                <option value="paypal">PayPal</option>
 
-    </article>
+            </select><br>
+            <input type="submit" value="Sign Up as Monthly Helper">
+        </form>
 
+        <img src="../images/websiteDividerPic.png" class="websiteDivider" alt="Pawprints">
 
-    <form method="post" action="#" class="Box" id="p2" >
-        <h4>Donate</h4>
-        First Name: <input type="text" name="fName"><br>
-        Last Name: <input type="text" name="lName"><br>
-        Email Address: <input type="email" name="email"><br>
-        Donation Amount(€): <input type="number" name="donationAmount" step="0.01"><br>
-        <input type="submit" value="Verify your payment"><br>
-
-        
-    </form>
-    
-    <form method="post" action="#" class="Box" id="p2">
-        <h4>Become a monthly helper</h4>
-        First Name: <input type="text" name="fName"><br>
-        Last Name: <input type="text" name="lName"><br>
-        Email Address: <input type="email" name="email"><br>
-        Monthly Donation Amount(€): <input type="number" name="monthlyDonation" step="0.01"><br>
-        <label for="paymentMethod">Payment Method:</label>
-        <select id="paymentMethod" name="paymentMethod">
-            <option value="paypal">MobilePay</option>
-            <option value="creditCard">Credit Card</option>
-            <option value="paypal">PayPal</option>
-        
-        </select><br>
-        <input type="submit" value="Sign Up as Monthly Helper">
-    </form>
-       
-    <img src="images/websiteDividerPic.png" class="websiteDivider" alt="Pawprints">    
-</main>
-<footer class="footer">
-    <a href="#main-nav"><strong>Back to top</strong></a>
-</footer>      
+    </main>
+    <footer class="footer">
+        <a href="#main-nav"><strong>Back to top</strong></a>
+    </footer>
 </body>
+
 </html>
