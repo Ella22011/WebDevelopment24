@@ -35,6 +35,7 @@ body {
 
 #main-nav ul li {
     margin-right: 10px;
+    white-space: nowrap;
 }
 
 #main-nav a {
