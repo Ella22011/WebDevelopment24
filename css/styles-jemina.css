@@ -34,11 +34,11 @@ body {
 }
 
 #main-nav ul li {
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
 #main-nav a {
-    padding: 5px 5px;
+    padding: 5px 10px;
     text-decoration: none;
     color: rgb(17, 16, 18);
 }
