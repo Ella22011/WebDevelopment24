@@ -1,14 +1,17 @@
 <?php
+// Read database connection information from the .ht.asetukset.ini file
+$config = parse_ini_file('.ht.asetukset.ini');
+
+$servername = $config['palvelin'];
+$username = $config['tunnus'];
+$password = $config['pass'];
+$dbname = $config['tk'];
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if all required fields are filled
     if (empty($_POST["fName"]) || empty($_POST["lName"]) || empty($_POST["email"]) || empty($_POST["donationAmount"])) {
         die("All fields are required.");
     }
-
-    $servername = "localhost";
-    $username = "trtkp23_15";
-    $password = "nKudfqeT";
-    $dbname = "web_trtkp23_1";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -19,16 +22,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Prepare and bind SQL statement
-    $stmt = $conn->prepare("INSERT INTO donations (first_name, last_name, email, donation_amount, monthly_donation, payment_method) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssdss", $first_name, $last_name, $email, $donation_amount, $monthly_donation, $payment_method);
+    $stmt = $conn->prepare("INSERT INTO donations (fName, lName, email, monthlyDonation, paymentMethod) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssss", $fName, $lName, $email, $monthlyDonation, $paymentMethod);
 
     // Set parameters and execute
-    $first_name = $_POST["fName"];
-    $last_name = $_POST["lName"];
+    $fName = $_POST["fName"];
+    $lName = $_POST["lName"];
     $email = $_POST["email"];
-    $donation_amount = $_POST["donationAmount"];
-    $monthly_donation = isset($_POST["monthlyDonation"]) ? $_POST["monthlyDonation"] : null;
-    $payment_method = $_POST["paymentMethod"];
+    $monthlyDonation = isset($_POST["monthlyDonation"]) ? $_POST["monthlyDonation"] : null;
+    $paymentMethod = $_POST["paymentMethod"];
 
     if ($stmt->execute()) {
         echo "New record created successfully";
