@@ -8,26 +8,31 @@
     <link rel="icon" type="image/x-icon" href="../images/favicon-32x32.png">
     <link rel="stylesheet" href="../css/styles-hanna.css">
     <title>Cat Distribution System - Donate</title>
+    <style>
+        .Box {
+            margin: 20px auto;
+        }
+    </style>
 </head>
 
 <body>
-        <nav id="main-nav">
-            <ul>
-                <li>
-                    <a class="navbar-brand" href="../index.html">
-                        <img src="../images/catLogo.png" alt="logo" height="50" width="auto">
-                    </a>
-                </li>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../pages/cats.html">Cats</a></li>
-                <li><a href="../pages/donate.html">Donate</a></li>
-                <li><a href="../pages/about.html">About us</a></li>
-            </ul>
-            <form>
-                <input type="text" placeholder="Search" aria-label="Search">
-                <button type="submit">Search</button>
-            </form>
-        </nav>
+    <nav id="main-nav">
+        <ul>
+            <li>
+                <a class="navbar-brand" href="../index.html">
+                    <img src="../images/catLogo.png" alt="logo" height="50" width="auto">
+                </a>
+            </li>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../pages/cats.html">Cats</a></li>
+            <li><a href="../pages/donate.html">Donate</a></li>
+            <li><a href="../pages/about.html">About us</a></li>
+        </ul>
+        <form>
+            <input type="text" placeholder="Search" aria-label="Search">
+            <button type="submit">Search</button>
+        </form>
+    </nav>
 
 
     <main class="donatePage">
@@ -39,24 +44,22 @@
                 more than anything. You can donate once or become a monthly helper by signing up.
             </p>
             <p>
-                Below you can find a form, where you can fill your informations and amount of your donation.
+                Below you can find a form, where you can fill your information and amount of your donation.
             </p>
 
         </article>
 
 
-        <form method="post" action="#" class="Box" id="p2">
+        <form method="post" action="form.php" class="Box" id="donateForm">
             <h4>Donate</h4>
             First Name: <input type="text" name="fName"><br>
             Last Name: <input type="text" name="lName"><br>
             Email Address: <input type="email" name="email"><br>
             Donation Amount(€): <input type="number" name="donationAmount" step="0.01"><br>
             <input type="submit" value="Verify your payment"><br>
-
-
         </form>
 
-        <form method="post" action="#" class="Box" id="p2">
+        <form method="post" action="form.php" class="Box" id="monthlyHelperForm">
             <h4>Become a monthly helper</h4>
             First Name: <input type="text" name="fName"><br>
             Last Name: <input type="text" name="lName"><br>
@@ -67,7 +70,6 @@
                 <option value="paypal">MobilePay</option>
                 <option value="creditCard">Credit Card</option>
                 <option value="paypal">PayPal</option>
-
             </select><br>
             <input type="submit" value="Sign Up as Monthly Helper">
         </form>
