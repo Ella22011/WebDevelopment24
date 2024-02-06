@@ -94,3 +94,28 @@ body {
     text-align: center;
     height: 10vh;
 }
+@media (max-width: 600px) {
+    #main-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #main-nav a{
+        padding: 3px;
+    }
+
+
+    #main-nav form {
+        margin: 10px 0;
+    }
+
+    #main-nav ul {
+        margin-top: 10px;
+        justify-content: flex-start;
+    }
+
+    #main-nav ul li {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}

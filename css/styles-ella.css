@@ -82,6 +82,10 @@ body {
         align-items: flex-start;
     }
 
+    #main-nav a{
+        padding: 3px;
+    }
+
     #main-nav form {
         margin: 10px 0;
     }
