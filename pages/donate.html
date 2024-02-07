@@ -49,19 +49,20 @@
         </article>
 
 
-        <form method="post" action="form.php" class="Box" id="monthlyHelperForm">
-            <h4>Become a monthly helper</h4>
+        <form method="post" action="./form.php" class="Box" id="DonateForm">
+            <h4>Donate</h4>
             First Name: <input type="text" name="fName"><br>
             Last Name: <input type="text" name="lName"><br>
             Email Address: <input type="email" name="email"><br>
-            Monthly Donation Amount(€): <input type="number" name="monthlyDonation" step="0.01"><br>
+            Donation Amount(€): <input type="number" name="Donation" step="0.01"><br>
             <label for="paymentMethod">Payment Method:</label>
             <select id="paymentMethod" name="paymentMethod">
                 <option value="paypal">MobilePay</option>
                 <option value="creditCard">Credit Card</option>
                 <option value="paypal">PayPal</option>
             </select><br>
-            <input type="submit" value="Sign Up as Monthly Helper">
+            Date: <input type="date" name="donationDate"
+            <input type="submit" value="Submit your donation">
         </form>
 
         <img src="../images/websiteDividerPic.png" class="websiteDivider" alt="Pawprints">
