@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Prepare and bind SQL statement
     $stmt = $conn->prepare("INSERT INTO donations (fName, lName, email, monthlyDonation, paymentMethod) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssss", $fName, $lName, $email, $monthlyDonation, $paymentMethod);
+    $stmt->bind_param("sssdd", $fName, $lName, $email, $monthlyDonation, $paymentMethod);
 
     // Set parameters and execute
     $fName = $_POST["fName"];
@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $paymentMethod = $_POST["paymentMethod"];
 
     if ($stmt->execute()) {
-        echo "New record created successfully";
+        echo "Thank you for your donation!";
     } else {
         echo "Error: " . $stmt->error;
     }
