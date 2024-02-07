@@ -1,6 +1,5 @@
 <?php
-// Read database connection information from the .ht.asetukset.ini file
-$config = parse_ini_file('.ht.asetukset.ini');
+
 
 $servername = $config['palvelin'];
 $username = $config['tunnus'];
