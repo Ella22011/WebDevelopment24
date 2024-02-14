@@ -1,4 +1,0 @@
-AuthType Basic
-AuthName "Restricted Area"
-AuthUserFile C:\Users\jemin\OneDrive - Hämeen ammattikorkeakoulu\GitHubit\WebDevelopment24\.htpasswd
-Require valid-user
