@@ -1,65 +1,87 @@
 <?php
 include("./connect.php");
+?>
 
-// Check if the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    try {
-        // Validate form data
-        $errors = array();
-        $fName = $_POST["fName"] ?? '';
-        $lName = $_POST["lName"] ?? '';
-        $email = $_POST["email"] ?? '';
-        $donation = $_POST["donation"] ?? '';
-        $paymentMethod = $_POST["paymentMethod"] ?? '';
-        $donationDate = $_POST["donationDate"] ?? '';
-
-        if (empty($fName)) {
-            $errors[] = "First name is required";
-        }
-        if (empty($lName)) {
-            $errors[] = "Last name is required";
-        }
-        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors[] = "Valid email address is required";
-        }
-        if (empty($donation) || !is_numeric($donation) || $donation <= 0) {
-            $errors[] = "Valid donation amount is required";
-        }
-        if (empty($paymentMethod)) {
-            $errors[] = "Payment method is required";
-        }
-        if (empty($donationDate)) {
-            $errors[] = "Donation date is required";
-        }
-
-        if (empty($errors)) {
-            // Prepare SQL statement
-            $query = "INSERT INTO donations (first_name, last_name, email, donation_amount, payment_method, donation_date) VALUES (?, ?, ?, ?, ?, ?)";
-            $stmt = $yhteys->prepare($query);
-
-            // Bind parameters
-            $stmt->bind_param("ssssss", $fName, $lName, $email, $donation, $paymentMethod, $donationDate);
-
-            // Execute statement
-            if ($stmt->execute()) {
-                echo "Thank you for your donation!";
-            } else {
-                echo "Error: Donation could not be processed.";
-            }
-
-            // Close statement
-            $stmt->close();
-        } else {
-            // Display validation errors
-            foreach ($errors as $error) {
-                echo $error . "<br>";
-            }
-        }
-    } catch (Exception $e) {
-        echo "Error: " . $e->getMessage();
-    }
+<?php
+if (isset($_POST["fName"])){
+    $fName=$_POST["fName"];
+}
+else{
+    $fName="";
+    header("Location:donate.html");
+    exit;
 }
 
-// Close database connection
+if (isset($_POST["lName"])){
+    $lName=$_POST["lName"];
+}
+else{
+    $lName= "";
+    header("Location:donate.html");
+    exit;
+}
+
+if (isset($_POST["email"])){
+    $email=$_POST["email"];
+}
+else{
+    $email= "";
+    header("Location:donate.html");
+    exit;
+}
+
+if (isset($_POST["donation"])){
+    $donation=$_POST["donation"];
+}
+else{
+    $donation= "";
+    header("Location:donate.html");
+    exit;
+}
+
+if (isset($_POST["paymentMethod"])){
+    $paymentMethod=$_POST["paymentMethod"];
+}
+else{
+    $paymentMethod= "";
+    header("Location:donate.html");
+    exit;
+}
+
+if (isset($_POST["donationDate"])){
+    $donationDate=$_POST["donationDate"];
+}
+else{
+    $donationDate= "";
+    header("Location:donate.html");
+    exit;
+}
+
+$yhteys = mysqli_connect("localhost", "trtkp23_15", "nKudfqeT");
+
+if (!$yhteys){
+    die("Connection Error: " . mysqli_connect_error());
+}
+
+$tietokanta=mysqli_select_db($yhteys,"lahjoitustietokanta");
+if (!$tietokanta){
+    die("Error selecting Database: " . mysqli_connect_error());
+}
+echo"Database OK";
+
+$sql="insert into nimet(fName, lName, email) values(?,?,?)";
+$sql="insert into lahjoitukset(donation, paymentMethod, donationDate) values(?,?,?)";
+$stmt=mysqli_prepare($yhteys, $sql);
+mysqli_stmt_bind_param($stmt, 'sss', $fName, $lName, $email);
+mysqli_stmt_bind_param($stmt, 'dsd', $donation, $paymentMethod, $donationDate);
+mysqli_stmt_execute($stmt);
+
+mysqli_stmt_close($stmt);
 mysqli_close($yhteys);
+
+
+
+
+
 ?>
+
