@@ -1,12 +1,14 @@
 <?php
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-$init = parse_ini_file("../pages/.ht.asetukset.ini");
+$init = parse_ini_file("./.ht.asetukset.ini");
 
-$yhteys = mysqli_connect($init["palvelin"], $init["tunnus"], $init["pass"], $init["tk"]);
-
-if (mysqli_connect_error()) {
-    header("Location: ../pages/yhteysvirhe.html");
+try{
+    $yhteys=mysqli_connect("localhost", "trtkp23_15", "nKudfqeT", "web_trtkp23_15");
+}
+catch(Exception $e){
+    header("Location:../pages/yhteysvirhe.html");
     exit;
 }
+
 ?>
