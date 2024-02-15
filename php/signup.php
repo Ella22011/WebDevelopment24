@@ -1,7 +1,7 @@
 <?php
 
 // Yhdistä tietokantaan
-    include("connect.php");
+    include("./connect.php");
 
         $fName=isset($_POST["fName"]) ? $_POST["fName"] :"";
         $lName=isset($_POST["lName"]) ? $_POST["lName"] :"";
