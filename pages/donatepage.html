@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cat Distribution System, your local cat adoption shelter.">
+    <link rel="icon" type="image/x-icon" href="../images/favicon-32x32.png">
+    <link rel="stylesheet" href="../css/styles-hanna.css">
+    <title>Cat Distribution System - Donate</title>
+    <style>
+        .Box {
+            margin: 20px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="main-nav">
+        <ul>
+            <li>
+                <a class="navbar-brand" href="../index.html">
+                    <img src="../images/catLogo.png" alt="logo" height="50" width="auto">
+                </a>
+            </li>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../pages/cats.html">Cats</a></li>
+            <li><a href="../pages/donate.html">Donate</a></li>
+            <li><a href="../pages/about.html">About us</a></li>
+            <li><a href="../pages/signup.html">Sign up</a></li>
+            <li><a href="../pages/login.html">Log in</a></li>
+        </ul>
+        <form>
+            <input type="text" placeholder="Search" aria-label="Search">
+            <button type="submit">Search</button>
+        </form>
+    </nav>
+
+
+    <main class="donatePage">
+        <article id="p1">
+            <h1> Donate</h1>
+            <p>
+                Donations are our main way to get money to provide for cats. No matter how small or big, we appreciate
+                it more than anything.
+            </p>
+            <p>
+                Below you can find a form, where you can fill your information and amount of your donation.
+            </p>
+
+        </article>
+
+
+        <form method="post" action="../php/form.php" class="Box" id="DonateForm">
+            <h4>Donate</h4>
+            First Name: <input type="text" name="fName"><br>
+            Last Name: <input type="text" name="lName"><br>
+            Email Address: <input type="email" name="email"><br>
+            Donation Amount(€): <input type="number" name="donation" step="0"><br>
+            <label for="paymentMethod">Payment Method:</label>
+            <select id="paymentMethod" name="paymentMethod">
+                <option value="mobilepay">MobilePay</option>
+                <option value="creditCard">Credit Card</option>
+                <option value="paypal">PayPal</option>
+            </select><br>
+            Date: <input type="date" name="donationDate"><br>
+            <input type="submit" value="Submit your donation">
+        </form>
+
+        <img src="../images/websiteDividerPic.png" class="websiteDivider" alt="Pawprints">
+         
+    </main>
+    <footer class="footer">
+        <a href="#main-nav"><strong>Back to top</strong></a>
+    </footer>
+</body>
+
+</html>
