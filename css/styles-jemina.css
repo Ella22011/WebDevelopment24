@@ -114,6 +114,10 @@ body {
     margin-top: 40px;
 }
 
+.thankyou h1{
+    text-align: center;
+}
+
 @media (max-width: 600px) {
     #main-nav
     {
