@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Jos käyttäjä löytyy, ohjaa eteenpäin
         if (mysqli_num_rows($result) == 1) {
-            $_SESSION["username"] = $username; // Tallenna käyttäjänimi istuntoon
+            $_SESSION["username"] = $username; // Tallentaa käyttäjänimen istuntoon
             header("Location: welcome.php"); // Ohjaa eteenpäin onnistuneen kirjautumisen jälkeen
         } else {
             $error = "Invalid username or password"; // Näytä virheviesti
