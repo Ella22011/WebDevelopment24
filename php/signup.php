@@ -19,7 +19,7 @@
 
         mysqli_close($yhteys);
 
-        header("Location:../pages/thankyou.html");
+        header("Location:../pages/login.html");
 
         exit;
     
