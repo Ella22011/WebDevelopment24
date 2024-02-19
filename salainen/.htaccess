@@ -5,6 +5,6 @@ AuthType Basic
 
 <Limit GET POST>
 require user jemina
-require user ella
 require user hanna
+require user ella
 </Limit>
