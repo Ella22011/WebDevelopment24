@@ -1,32 +1,46 @@
 <?php
 
-// Yhdistä tietokantaan
-    include("./connect.php");
+// Connect to the database
+include("./connect.php");
 
-    //Haetaan käyttäjän tiedot
-        $fName=isset($_POST["fName"]) ? $_POST["fName"] :"";
-        $lName=isset($_POST["lName"]) ? $_POST["lName"] :"";
-        $email=isset($_POST["email"]) ? $_POST["email"] :"";
-        $username=isset($_POST["username"]) ? $_POST["username"] : 0;
-        $password=isset($_POST["password"]) ? $_POST["password"] :"";
+// Get user input data
+$fName = isset($_POST["fName"]) ? $_POST["fName"] : "";
+$lName = isset($_POST["lName"]) ? $_POST["lName"] : "";
+$email = isset($_POST["email"]) ? $_POST["email"] : "";
+$username = isset($_POST["username"]) ? $_POST["username"] : "";
+$password = isset($_POST["password"]) ? $_POST["password"] : "";
 
-    //Määritellään talun nimi ja kentät, joihin halutaan lisätä tiedot
+// Check if the username is already in use
+$query = "SELECT * FROM users WHERE username=?";
+$stmt = mysqli_prepare($connection, $query);
+mysqli_stmt_bind_param($stmt, "s", $username);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
 
-        $sql="insert into users (fName, lName, email, username, password) values (?, ?, ?, ?, ?)";
+if (mysqli_num_rows($result) > 0) {
+    // Username is already in use, give an error message or do something else
+    echo "Username is already in use!";
+} else {
+    // Username is unique, add the user to the database
 
-        $stmt=mysqli_prepare($yhteys, $sql);
+    // Hash the password before storing it in the database
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-        //Liitetään muuttujien arvot valmisteltuun lausekkeeseen
+    // Define the database query to add the user
+    $sql = "INSERT INTO users (fName, lName, email, username, password) VALUES (?, ?, ?, ?, ?)";
+    $stmt = mysqli_prepare($connection, $sql);
 
-        mysqli_stmt_bind_param($stmt, 'sssss', $fName, $lName, $email, $username, $password);
+    // Bind the values of variables to the prepared statement
+    mysqli_stmt_bind_param($stmt, "sssss", $fName, $lName, $email, $username, $hashed_password);
 
-        mysqli_stmt_execute($stmt);
+    // Execute the query
+    mysqli_stmt_execute($stmt);
 
-        mysqli_close($yhteys);
+    // Close the database connection
+    mysqli_close($connection);
 
-        header("Location:../pages/login.html");
-
-        exit;
-    
-
+    // Redirect the user to the login page
+    header("Location:../pages/login.html");
+    exit;
+}
 ?>
