@@ -1,5 +1,6 @@
 <?php
 session_start(); // Aloita istunto
+$_SESSION["loggedin"] = true;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Tarkista, että käyttäjänimi ja salasana on lähetetty lomakkeesta
@@ -27,8 +28,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Sulje tietokantayhteys
         mysqli_close($yhteys);
-
-
     }
 }
 ?>
