@@ -28,7 +28,7 @@ if (mysqli_num_rows($result) > 0) {
 
     // Define the database query to add the user
     $sql = "INSERT INTO users (fName, lName, email, username, password) VALUES (?, ?, ?, ?, ?)";
-    $stmt = mysqli_prepare($connection, $sql);
+    $stmt = mysqli_prepare($yhteys, $sql);
 
     // Bind the values of variables to the prepared statement
     mysqli_stmt_bind_param($stmt, "sssss", $fName, $lName, $email, $username, $hashed_password);
