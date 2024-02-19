@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (password_verify($password, $user['password'])) {
                 $_SESSION["username"] = $username; // Tallentaa käyttäjänimen istuntoon
                 $_SESSION["loggedin"] = true;
-                header("Location: donate.html"); // Ohjaa eteenpäin onnistuneen kirjautumisen jälkeen
+                header("Location: welcome.php"); // Ohjaa eteenpäin onnistuneen kirjautumisen jälkeen
                 exit(); // Lisää tämä, jotta varmistetaan, että koodi ei jatka suoritusta tämän jälkeen
             } else {
                 $_SESSION['error'] = "Invalid username or password"; // Näytä virheviesti
