@@ -1,41 +1,30 @@
 <?php
-session_start(); // Start the session
-include("./connect.php"); // Include database connection
+include ("./connect.php");
 
-$username = isset($_POST["username"]) ? $_POST["username"] : "";
-$donation_amount = isset($_POST["donation_amount"]) ? $_POST["donation_amount"] : 0;
-$paymentMethod = isset($_POST["paymentMethod"]) ? $_POST["paymentMethod"] : "";
-$donationDate = isset($_POST["donationDate"]) ? $_POST["donationDate"] : "";
+$fName=isset($_POST["fName"]) ? $_POST["fName"] :"";
+$lName=isset($_POST["lName"]) ? $_POST["lName"] :"";
+$email=isset($_POST["email"]) ? $_POST["email"] :"";
+$donation=isset($_POST["donation"]) ? $_POST["donation"] : 0;
+$paymentMethod=isset($_POST["paymentMethod"]) ? $_POST["paymentMethod"] :"";
+$donationDate = isset($_POST["donationDate"]) ? date('Y-m-d', strtotime($_POST["donationDate"])) : "";
 
-// Validate form data
-if (empty($username) || empty($donation_amount) || empty($paymentMethod) || empty($donationDate)) {
-    $_SESSION['error'] = "Please fill in all required fields.";
-    header("Location: ../pages/donate.html");
+
+if (empty($fName) || empty($lName) || empty($email) || empty($donation) || empty($paymentMethod) || empty($donationDate)){
+    header("Location:../pages/donate.html");
     exit;
 }
 
-// Insert donation into the database
-$sql = "INSERT INTO kissalahjoitukset (username, donation_amount, paymentMethod, donationDate) VALUES (?, ?, ?, ?)";
-$stmt = mysqli_prepare($yhteys, $sql);
+$sql="insert into kissalahjoitukset (fName, lName, email, donation, paymentMethod, donationDate) values (?, ?, ?, ?, ?, ?)";
 
-if (!$stmt) {
-    $_SESSION['error'] = "Error: Database connection error.";
-    header("Location: ../pages/yhteysvirhe.html");
-    exit;
-}
+$stmt=mysqli_prepare($yhteys, $sql);
 
-mysqli_stmt_bind_param($stmt, 'siss', $username, $donation_amount, $paymentMethod, $donationDate);
+mysqli_stmt_bind_param($stmt, 'sssiss', $fName, $lName, $email, $donation, $paymentMethod, $donationDate);
 
-if (!mysqli_stmt_execute($stmt)) {
-    $_SESSION['error'] = "Error: Unable to process donation.";
-    header("Location: ../pages/yhteysvirhe.html");
-    exit;
-}
+mysqli_stmt_execute($stmt);
 
-mysqli_stmt_close($stmt);
 mysqli_close($yhteys);
 
-$_SESSION['success'] = "Thank you for your donation!";
-header("Location: ../pages/thankyou.html");
+header("Location:../pages/thankyou.html");
+
 exit;
 ?>
