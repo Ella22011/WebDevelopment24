@@ -12,7 +12,7 @@ $password = isset($_POST["password"]) ? $_POST["password"] : "";
 
 // Check if the username is already in use
 $query = "SELECT * FROM users WHERE username=?";
-$stmt = mysqli_prepare($connection, $query);
+$stmt = mysqli_prepare($yhteys, $query);
 mysqli_stmt_bind_param($stmt, "s", $username);
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
@@ -37,7 +37,7 @@ if (mysqli_num_rows($result) > 0) {
     mysqli_stmt_execute($stmt);
 
     // Close the database connection
-    mysqli_close($connection);
+    mysqli_close($yhteys);
 
     // Redirect the user to the login page
     header("Location:../pages/login.html");
