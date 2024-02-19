@@ -26,14 +26,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 $error = "Invalid username or password"; // Näytä virheviesti
             }
-        } else {
-            $error = "Invalid username or password"; // Näytä virheviesti
-        }
 
         // Sulje tietokantayhteys
         mysqli_close($yhteys);
     }
 }
 ?>
-
-<!-- HTML FORM -->
