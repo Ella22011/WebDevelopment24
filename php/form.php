@@ -36,6 +36,6 @@ mysqli_stmt_close($stmt);
 mysqli_close($yhteys);
 
 $_SESSION['success'] = "Thank you for your donation!";
-header("Location: ../pages/donate.html");
+header("Location: ../pages/thankyou.html");
 exit;
 ?>
