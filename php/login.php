@@ -28,8 +28,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Sulje tietokantayhteys
         mysqli_close($yhteys);
-
-
     }
 }
 ?>
