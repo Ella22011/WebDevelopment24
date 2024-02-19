@@ -1,0 +1,10 @@
+AuthUserFile "/home/trtkp23_15/public_html/salainen/.htsalasanat"
+AuthGroupFile /dev/null
+AuthName "Tietokanta"
+AuthType Basic
+
+<Limit GET POST>
+require user jemina
+require user ella
+require user hanna
+</Limit>
