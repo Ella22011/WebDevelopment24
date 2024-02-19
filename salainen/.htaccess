@@ -1,4 +1,4 @@
-AuthUserFile "/home/trtkp23_15/public_html/salainen/.htsalasanat"
+AuthUserFile "/home/trtkp23_15/public_html/WebDevelopment24/salainen/.htsalasanat"
 AuthGroupFile /dev/null
 AuthName "Tietokanta"
 AuthType Basic
