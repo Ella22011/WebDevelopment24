@@ -14,7 +14,7 @@ if (empty($user_id) || empty($username) || empty($donation_id) || empty($donatio
     exit;
 }
 
-$sql="insert into kissalahjoitukset (user_id, username, donation_id, donation_amount, paymentMethod, donationDate) values (?, ?, ?, ?, ?, ?)";
+$sql="insert into kissalahjoitukset (user_id, username, donation_id, donation_amount, paymentMethod, donationDate) values(?, ?, ?, ?, ?, ?)";
 
 $stmt=mysqli_prepare($yhteys, $sql);
 
