@@ -1,16 +1,14 @@
 <?php
+include("./connect.php"); // Yhdistä tietokantaan
 
-// Connect to the database
-include("./connect.php");
-
-// Get user input data
+// Saadaan käyttäjän syöttämät tiedot
 $fName = isset($_POST["fName"]) ? $_POST["fName"] : "";
 $lName = isset($_POST["lName"]) ? $_POST["lName"] : "";
 $email = isset($_POST["email"]) ? $_POST["email"] : "";
 $username = isset($_POST["username"]) ? $_POST["username"] : "";
 $password = isset($_POST["password"]) ? $_POST["password"] : "";
 
-// Check if the username is already in use
+// Tarkistetaan, onko käyttäjänimi jo käytössä
 $query = "SELECT * FROM users WHERE username=?";
 $stmt = mysqli_prepare($yhteys, $query);
 mysqli_stmt_bind_param($stmt, "s", $username);
@@ -18,28 +16,28 @@ mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 
 if (mysqli_num_rows($result) > 0) {
-    // Username is already in use, give an error message or do something else
-    echo "Username is already in use!";
+    // Käyttäjänimi on jo käytössä, annetaan virheilmoitus tai tehdään jotain muuta tarvittavaa
+    echo "Käyttäjänimi on jo käytössä!";
 } else {
-    // Username is unique, add the user to the database
+    // Käyttäjänimi on uniikki, lisätään käyttäjä tietokantaan
 
-    // Hash the password before storing it in the database
+    // Salataan salasana ennen sen tallentamista tietokantaan
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    // Define the database query to add the user
+    // Määritellään tietokantakysely käyttäjän lisäämiseksi
     $sql = "INSERT INTO users (fName, lName, email, username, password) VALUES (?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($yhteys, $sql);
 
-    // Bind the values of variables to the prepared statement
+    // Sidotaan muuttujien arvot valmisteltuun kyselyyn
     mysqli_stmt_bind_param($stmt, "sssss", $fName, $lName, $email, $username, $hashed_password);
 
-    // Execute the query
+    // Suoritetaan kysely
     mysqli_stmt_execute($stmt);
 
-    // Close the database connection
+    // Suljetaan tietokantayhteys
     mysqli_close($yhteys);
 
-    // Redirect the user to the login page
+    // Ohjataan käyttäjä kirjautumissivulle
     header("Location:../pages/login.html");
     exit;
 }
