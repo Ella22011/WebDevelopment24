@@ -1,6 +1,6 @@
 <?php
 session_start(); // Aloita istunto
-$_SESSION["loggedin"] = true;
+$_SESSION["loggedin"] = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Tarkista, että käyttäjänimi ja salasana on lähetetty lomakkeesta
@@ -13,21 +13,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = mysqli_real_escape_string($yhteys, $_POST["password"]);
 
         // Tarkista käyttäjän tiedot tietokannasta
-        $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+        $query = "SELECT * FROM users WHERE username='$username'";
         $result = mysqli_query($yhteys, $query);
 
-        // Jos käyttäjä löytyy, ohjaa eteenpäin
         if (mysqli_num_rows($result) == 1) {
-        $_SESSION["username"] = $username; // Tallentaa käyttäjänimen istuntoon
-            header("Location: welcome.php"); // Ohjaa eteenpäin onnistuneen kirjautumisen jälkeen
+            $user = mysqli_fetch_assoc($result);
+            if (password_verify($password, $user['password'])) {
+                $_SESSION["username"] = $username; // Tallentaa käyttäjänimen istuntoon
+                $_SESSION["loggedin"] = true;
+                header("Location: welcome.php"); // Ohjaa eteenpäin onnistuneen kirjautumisen jälkeen
+                exit(); // Lisää tämä, jotta varmistetaan, että koodi ei jatka suoritusta tämän jälkeen
+            } else {
+                $error = "Invalid username or password"; // Näytä virheviesti
+            }
         } else {
             $error = "Invalid username or password"; // Näytä virheviesti
         }
-
-        header("Location:../pages/donate.html"); // Ohjaa eteenpäin onnistuneen kirjautumisen jälkeen
 
         // Sulje tietokantayhteys
         mysqli_close($yhteys);
     }
 }
 ?>
+
+<!-- HTML FORM -->
