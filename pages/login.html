@@ -1,12 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <meta name="description" content="Cat Distribution System, your local cat adoption shelter.">
+    <link rel="icon" type="image/x-icon" href="../images/favicon-32x32.png">
+    <link rel="stylesheet" href="../css/styles-ella.css">
 </head>
 <body>
+    <nav id="main-nav">
+        <ul>
+            <li>
+                <a class="navbar-brand" href="../index.html">
+                    <img src="../images/catLogo.png" alt="logo" height="50" width="auto">
+                </a>
+            </li>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../pages/cats.html">Cats</a></li>
+            <li><a href="../pages/donate.html">Donate</a></li>
+            <li><a href="../pages/about.html">About us</a></li>
+            <li><a href="../pages/signup.html">Sign up</a></li>
+            <li><a href="../pages/login.html">Log in</a></li>
 
+        </ul>
+        <form>
+            <input type="text" placeholder="Search" aria-label="Search">
+            <button type="submit">Search</button>
+        </form>
+    </nav>
 <h2>Login</h2>
 <form method="post" action="../php/login.php">
     <label for="username">Username:</label><br>
@@ -15,5 +37,7 @@
     <input type="password" id="password" name="password"><br><br>
     <input type="submit" value="Login">
 </form>
+<h2></h2>
+<img src="../images/websiteDividerPic.png" class="websiteDivider" alt="Pawprints">
 </body>
 </html>
