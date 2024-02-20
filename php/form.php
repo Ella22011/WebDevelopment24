@@ -13,7 +13,7 @@ $donationDate = isset($_POST["donationDate"]) ? date('Y-m-d', strtotime($_POST["
    // exit;
 //}
 
-$sql="insert into kissalahjoitukset (user_id, username, donation_id, paymentMethod, donationDate) values (?, ?, ?, ?, ?)";
+$sql="INSERT INTO kissalahjoitukset (user_id, username, donation_id, paymentMethod, donationDate) values (?, ?, ?, ?, ?)";
 
 $stmt=mysqli_prepare($yhteys, $sql);
 
