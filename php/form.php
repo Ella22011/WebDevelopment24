@@ -16,7 +16,7 @@ $sql="INSERT INTO kissalahjoitukset (user_id, username, donation_id, paymentMeth
 
 $stmt=mysqli_prepare($yhteys, $sql);
 
-mysqli_stmt_bind_param($stmt, 'isiss', $user_id, $username, $donation_id, $paymentMethod, $donationDate);
+mysqli_stmt_bind_param($stmt, 'isiiss', $user_id, $username, $donation_id, $paymentMethod, $donationDate);
 
 mysqli_stmt_execute($stmt);
 
