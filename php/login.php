@@ -1,48 +1,88 @@
 <?php
-session_start(); // Aloita istunto
-include("./connect.php"); // Sisällytä tietokantayhteys
+session_start();
 
-// Tarkista, onko käyttäjä jo kirjautunut sisään
-if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-    header("Location: ../pages/donate.html"); // Ohjaa donate.html-sivulle
+// Check if the user is already logged in, redirect to home page
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    header("location: ../index.html");
     exit;
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Tarkista, onko käyttäjätunnus ja salasana lähetetty lomakkeesta
-    if (isset($_POST["username"]) && isset($_POST["password"])) {
-        // Puhdista ja paikanna käyttäjätunnus ja salasana SQL-injektioiden estämiseksi
-        $username = mysqli_real_escape_string($yhteys, $_POST["username"]);
-        $password = mysqli_real_escape_string($yhteys, $_POST["password"]);
+// Include database connection file
+include_once "./connect.php";
 
-        // Hae käyttäjän tiedot tietokannasta
-        $query = "SELECT * FROM users WHERE username='$username'";
-        $result = mysqli_query($yhteys, $query);
+// Define variables and initialize with empty values
+$username = $password = "";
+$username_err = $password_err = $login_err = "";
 
-        if ($result && mysqli_num_rows($result) == 1) {
-            $user = mysqli_fetch_assoc($result);
-            // Tarkista salasana
-            if (password_verify($password, $user['password'])) {
-                // Tallenna käyttäjänimi istuntoon
-                $_SESSION["username"] = $username;
-                $_SESSION["loggedin"] = true;
+// Processing form data when form is submitted
+if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-                // Ohjaa käyttäjä donate.html-sivulle
-                header("Location: ../pages/donate.html");
-                exit();
-            }
-        }
-
-        $_SESSION['error'] = "Invalid username or password"; // Aseta virheilmoitus
-    } else {
-        $_SESSION['error'] = "Please enter username and password"; // Aseta virheilmoitus
+    // Validate username
+    if(empty(trim($_POST["username"]))){
+        $username_err = "Please enter username.";
+    } else{
+        $username = trim($_POST["username"]);
     }
 
-    // Sulje tietokantayhteys
-    mysqli_close($yhteys);
-}
+    // Validate password
+    if(empty(trim($_POST["password"]))){
+        $password_err = "Please enter your password.";
+    } else{
+        $password = trim($_POST["password"]);
+    }
 
-// Ohjaa takaisin kirjautumissivulle virheilmoituksella
-header("Location: ../pages/login.html");
-exit();
+    // Check input errors before validating the credentials
+    if(empty($username_err) && empty($password_err)){
+        // Prepare a select statement
+        $sql = "SELECT id, username, password FROM users WHERE username = ?";
+
+        if($stmt = mysqli_prepare($yhteys, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "s", $param_username);
+
+            // Set parameters
+            $param_username = $username;
+
+            // Attempt to execute the prepared statement
+            if(mysqli_stmt_execute($stmt)){
+                // Store result
+                mysqli_stmt_store_result($stmt);
+
+                // Check if username exists, if yes then verify password
+                if(mysqli_stmt_num_rows($stmt) == 1){
+                    // Bind result variables
+                    mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
+                    if(mysqli_stmt_fetch($stmt)){
+                        if(password_verify($password, $hashed_password)){
+                            // Password is correct, start a new session
+                            session_start();
+
+                            // Store data in session variables
+                            $_SESSION["loggedin"] = true;
+                            $_SESSION["id"] = $id;
+                            $_SESSION["username"] = $username;
+
+                            // Redirect user to home page
+                            header("location: home.php");
+                        } else{
+                            // Display an error message if password is not valid
+                            $login_err = "Invalid username or password.";
+                        }
+                    }
+                } else{
+                    // Display an error message if username doesn't exist
+                    $login_err = "Invalid username or password.";
+                }
+            } else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+
+            // Close statement
+            mysqli_stmt_close($stmt);
+        }
+    }
+
+    // Close connection
+    mysqli_close($link);
+}
 ?>

@@ -29,6 +29,16 @@
         </form>
     </nav>
 
+    <?php
+    session_start();
+
+    // Tarkista, onko käyttäjä kirjautunut sisään
+    if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    // Jos käyttäjä ei ole kirjautunut sisään, ohjaa hänet kirjautumissivulle
+    header("location: login.html");
+    exit;
+}
+?>
     <h2></h2>
     <form class="form" method="post" action="../php/form.php">
         <h2>Donate</h2>
