@@ -43,7 +43,7 @@ if (mysqli_num_rows($result) > 0) {
     $_SESSION['user'] = $username;
 
     // Ohjataan käyttäjä kirjautumissivulle
-    header("Location:../pages/login.html");
+    header("Location:../pages/donate.html");
     exit;
 }
 ?>
