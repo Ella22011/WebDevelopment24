@@ -1,39 +1,48 @@
 <?php
-session_start(); // Start the session
-include("./connect.php"); // Include database connection
+session_start(); // Aloita istunto
+include("./connect.php"); // Sisällytä tietokantayhteys
+
+// Tarkista, onko käyttäjä jo kirjautunut sisään
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+    header("Location: ../pages/donate.html"); // Ohjaa donate.html-sivulle
+    exit;
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Check if username and password have been sent from the form
+    // Tarkista, onko käyttäjätunnus ja salasana lähetetty lomakkeesta
     if (isset($_POST["username"]) && isset($_POST["password"])) {
-        // Escape special characters to prevent SQL injection
+        // Puhdista ja paikanna käyttäjätunnus ja salasana SQL-injektioiden estämiseksi
         $username = mysqli_real_escape_string($yhteys, $_POST["username"]);
         $password = mysqli_real_escape_string($yhteys, $_POST["password"]);
 
-        // Check user credentials in the database
+        // Hae käyttäjän tiedot tietokannasta
         $query = "SELECT * FROM users WHERE username='$username'";
         $result = mysqli_query($yhteys, $query);
 
         if ($result && mysqli_num_rows($result) == 1) {
             $user = mysqli_fetch_assoc($result);
+            // Tarkista salasana
             if (password_verify($password, $user['password'])) {
-                $_SESSION["username"] = $username; // Store the username in the session
+                // Tallenna käyttäjänimi istuntoon
+                $_SESSION["username"] = $username;
                 $_SESSION["loggedin"] = true;
-                header("Location: ../pages/donate.html"); // Redirect to donate.html after successful login
+
+                // Ohjaa käyttäjä donate.html-sivulle
+                header("Location: ../pages/donate.html");
                 exit();
-            } else {
-                $_SESSION['error'] = "Invalid username or password"; // Set error message
             }
-        } else {
-            $_SESSION['error'] = "Invalid username or password"; // Set error message
         }
 
-        // Close the database connection
-        mysqli_close($yhteys);
+        $_SESSION['error'] = "Invalid username or password"; // Aseta virheilmoitus
+    } else {
+        $_SESSION['error'] = "Please enter username and password"; // Aseta virheilmoitus
     }
+
+    // Sulje tietokantayhteys
+    mysqli_close($yhteys);
 }
 
-// Redirect back to the login page with an error message
-$_SESSION['error'] = "Login failed. Please try again.";
+// Ohjaa takaisin kirjautumissivulle virheilmoituksella
 header("Location: ../pages/login.html");
 exit();
 ?>
