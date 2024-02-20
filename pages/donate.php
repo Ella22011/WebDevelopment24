@@ -22,12 +22,25 @@
             <li><a href="../pages/signup.html">Sign up</a></li>
             <li><a href="../pages/login.html">Log in</a></li>
             <li><a href="../salainen/registeredusers.html">Log in</a></li>
+            <li id="logout-li" style="display: none;"><a id="logout-link" href="../logout.php">Log out</a></li>
         </ul>
         <form>
             <input type="text" placeholder="Search" aria-label="Search">
             <button type="submit">Search</button>
         </form>
     </nav>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Näytä linkki vain, jos käyttäjä on kirjautunut sisään
+        const isLoggedIn = <?php echo isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 'true' : 'false'; ?>;
+        const logoutLi = document.getElementById('logout-li');
+        if (isLoggedIn) {
+            logoutLi.style.display = 'block';
+        } else {
+            logoutLi.style.display = 'none';
+        }
+    });
+</script>
 
     <?php
     session_start();
