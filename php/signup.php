@@ -1,6 +1,8 @@
 <?php
 include("./connect.php"); // Yhdistä tietokantaan
 
+session_start(); // Aloita istunto
+
 // Saadaan käyttäjän syöttämät tiedot
 $fName = isset($_POST["fName"]) ? $_POST["fName"] : "";
 $lName = isset($_POST["lName"]) ? $_POST["lName"] : "";
@@ -37,8 +39,12 @@ if (mysqli_num_rows($result) > 0) {
     // Suljetaan tietokantayhteys
     mysqli_close($yhteys);
 
+    // Kirjataan käyttäjä automaattisesti sisään
+    $_SESSION['user'] = $username;
+
     // Ohjataan käyttäjä kirjautumissivulle
-    header("Location:../pages/login.html");
+    header("Location:../pages/donate.html");
     exit;
 }
 ?>
+
