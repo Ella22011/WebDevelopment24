@@ -8,11 +8,10 @@ $paymentMethod=isset($_POST["paymentMethod"]) ? $_POST["paymentMethod"] :"";
 $donationDate = isset($_POST["donationDate"]) ? date('Y-m-d', strtotime($_POST["donationDate"])) : "";
 
 
-//if (empty($user_id) || empty($username) || empty($donation_id) || empty($paymentMethod) || empty($donationDate)){
-  //  header("Location:../pages/donate.html");
-   // exit;
-//}
-
+if (empty($user_id) || empty($username) || empty($donation_id) || empty($paymentMethod) || empty($donationDate)){
+    header("Location:../pages/donate.html");
+    exit;
+}
 $sql="INSERT INTO kissalahjoitukset (user_id, username, donation_id, paymentMethod, donationDate) values (?, ?, ?, ?, ?)";
 
 $stmt=mysqli_prepare($yhteys, $sql);
