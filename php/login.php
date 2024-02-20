@@ -1,3 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<nav id="main-nav">
+<ul>
+    <li>
+        <a class="navbar-brand" href="../index.html">
+            <img src="../images/catLogo.png" alt="logo" height="50" width="auto">
+        </a>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../pages/cats.html">Cats</a></li>
+        <li><a href="../pages/donatepage.html">Donate</a></li>
+        <li><a href="../pages/about.html">About us</a></li>
+        <li><a href="../pages/signup.html">Sign up</a></li>
+        <li><a href="../pages/login.html">Log in</a></li>
+        <?php
+                // Näytä linkki vain, jos käyttäjä on kirjautunut sisään
+                session_start();
+                if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+                    echo '<li><a href="../salainen/registeredusers.html">Registered Users</a></li>';
+                }
+                ?>
+</ul>
+<form>
+    <input type="text" placeholder="Search" aria-label="Search">
+    <button type="submit">Search</button>
+</form>
+</nav>
+</body>
+</html>
+
 <?php
 session_start();
 
@@ -34,7 +64,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Check input errors before validating the credentials
     if(empty($username_err) && empty($password_err)){
         // Prepare a select statement
-        $sql = "SELECT id, username, password FROM users WHERE username = ?";
+        $sql = "SELECT user_id, username, password FROM users WHERE username = ?";
 
         if($stmt = mysqli_prepare($yhteys, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -51,7 +81,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 // Check if username exists, if yes then verify password
                 if(mysqli_stmt_num_rows($stmt) == 1){
                     // Bind result variables
-                    mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
+                    mysqli_stmt_bind_result($stmt, $user_id, $username, $hashed_password);
                     if(mysqli_stmt_fetch($stmt)){
                         if(password_verify($password, $hashed_password)){
                             // Password is correct, start a new session
@@ -59,11 +89,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                             // Store data in session variables
                             $_SESSION["loggedin"] = true;
-                            $_SESSION["id"] = $id;
+                            $_SESSION["user_id"] = $user_id;
                             $_SESSION["username"] = $username;
 
                             // Redirect user to home page
-                            header("location: home.php");
+                            header("location: ../index.html");
                         } else{
                             // Display an error message if password is not valid
                             $login_err = "Invalid username or password.";
@@ -83,6 +113,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     // Close connection
-    mysqli_close($link);
+    mysqli_close($yhteys);
 }
 ?>
