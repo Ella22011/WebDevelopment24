@@ -29,7 +29,7 @@
             <button type="submit">Search</button>
         </form>
     </nav>
-<script>
+<!--<script>
     document.addEventListener('DOMContentLoaded', function () {
         // Näytä linkki vain, jos käyttäjä on kirjautunut sisään
         const isLoggedIn = <?php echo isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 'true' : 'false'; ?>;
@@ -40,9 +40,9 @@
             logoutLi.style.display = 'none';
         }
     });
-</script>
-
-    <?php
+</script> 
+-->
+ <!--    <?php
     session_start();
 
     // Tarkista, onko käyttäjä kirjautunut sisään
@@ -50,8 +50,8 @@
     // Jos käyttäjä ei ole kirjautunut sisään, ohjaa hänet kirjautumissivulle
     header("location: ./login.html");
     exit;
-}
-?>
+} 
+?> -->
     <h2></h2>
     <form class="form" method="post" action="../php/form.php">
         <h2>Donate</h2>
