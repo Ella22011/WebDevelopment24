@@ -16,11 +16,11 @@
                 <img src="../images/catLogo.png" alt="logo" height="50" width="auto">
             </a>
         </li>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../pages/cats.html">Cats</a></li>
+        <li><a href="../index.php">Home</a></li>
+        <li><a href="../pages/cats.php">Cats</a></li>
         <li><a href="../pages/donatepage.html">Donate</a></li>
-        <li><a href="../pages/about.html">About us</a></li>
-        <li><a href="../pages/signup.html">Sign up</a></li>
+        <li><a href="../pages/about.php">About us</a></li>
+        <li><a href="../pages/signup.php">Sign up</a></li>
         <?php
         session_start();
         if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){

@@ -11,26 +11,37 @@
 </head>
 
 <body>
-    <nav id="main-nav">
-        <ul>
-            <li>
-                <a class="navbar-brand" href="../index.html">
-                    <img src="../images/catLogo.png" alt="logo" height="50" width="auto">
-                </a>
-            </li>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="../pages/cats.html">Cats</a></li>
-            <li><a href="../pages/donatepage.html">Donate</a></li>
-            <li><a href="../pages/about.html">About us</a></li>
-            <li><a href="../pages/signup.html">Sign up</a></li>
-            <li><a href="../pages/login.html">Log in</a></li>
+<nav id="main-nav">
+    <ul>
+        <li>
+            <a class="navbar-brand" href="../index.html">
+                <img src="../images/catLogo.png" alt="logo" height="50" width="auto">
+            </a>
+        </li>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../pages/cats.html">Cats</a></li>
+        <li><a href="../pages/donatepage.html">Donate</a></li>
+        <li><a href="../pages/about.html">About us</a></li>
+        <li><a href="../pages/signup.html">Sign up</a></li>
+        <?php
+        // Aloita istunto
+        session_start();
 
-        </ul>
-        <form>
-            <input type="text" placeholder="Search" aria-label="Search">
-            <button type="submit">Search</button>
-        </form>
-    </nav>
+        // Tarkista, onko käyttäjä kirjautunut sisään
+        if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+            // Näytä log out -painike
+            echo '<li><a href="../php/logout.php">Log out</a></li>';
+        } else {
+            // Näytä kirjaudu sisään -painike
+            echo '<li><a href="../pages/login.php">Log in</a></li>';
+        }
+        ?>
+    </ul>
+    <form>
+        <input type="text" placeholder="Search" aria-label="Search">
+        <button type="submit">Search</button>
+    </form>
+</nav>
 
     <main class="homepage">
         <article id="C1">

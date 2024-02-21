@@ -32,7 +32,8 @@ if ($stmt) {
         // Tarkista, vastaako annettu salasana hashattua salasanaa
         if (password_verify($password, $row['password'])) {
             // Aseta sessiomuuttuja osoittamaan, että käyttäjä on kirjautunut sisään
-            $_SESSION["user_ok"] = "ok";
+            $_SESSION["loggedin"] = true; // Asetetaan kirjautumistila
+            $_SESSION["username"] = $username; // Asetetaan käyttäjänimi istuntoon tarvittaessa
             // Ohjaa käyttäjä donate.php-sivulle
             header("Location: ../pages/donate.php");
             // Lopeta tämän skriptin suoritus
