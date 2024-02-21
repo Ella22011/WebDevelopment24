@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+$donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? "./donate.php" : "./donatepage.html";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,13 +25,10 @@
         </li>
         <li><a href="../index.php">Home</a></li>
         <li><a href="../pages/cats.php">Cats</a></li>
-        <li><a href="../pages/donatepage.html">Donate</a></li>
+        <li><a href="<?php echo $donate_page; ?>">Donate</a></li>
         <li><a href="../pages/about.php">About us</a></li>
         <li><a href="../pages/signup.php">Sign up</a></li>
         <?php
-        // Aloita istunto
-        session_start();
-
         // Tarkista, onko käyttäjä kirjautunut sisään
         if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
             // Näytä log out -painike

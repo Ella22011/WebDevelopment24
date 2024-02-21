@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+$donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? "./donate.php" : "./donatepage.html";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,11 +23,10 @@
         </li>
         <li><a href="../index.php">Home</a></li>
         <li><a href="../pages/cats.php">Cats</a></li>
-        <li><a href="../pages/donatepage.html">Donate</a></li>
+        <li><a href="<?php echo $donate_page; ?>">Donate</a></li>
         <li><a href="../pages/about.php">About us</a></li>
         <li><a href="../pages/signup.php">Sign up</a></li>
         <?php
-        session_start();
         if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
             echo '<li id="logout-li"><a id="logout-link" href="../php/logout.php">Log out</a></li>';
         } else {

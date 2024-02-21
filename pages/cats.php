@@ -28,8 +28,6 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
       <li><a href="../pages/about.php">About us</a></li>
       <li><a href="../pages/signup.php">Sign up</a></li>
       <?php
-        $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? "/donate.php" : "/donatepage.html";
-
         // Tarkista, onko käyttäjä kirjautunut sisään
         if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
             // Näytä log out -painike
