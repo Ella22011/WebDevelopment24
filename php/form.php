@@ -13,7 +13,7 @@ if (empty($user_id) || empty($username) || empty($donation_id) || empty($donatio
     header("Location:../pages/donate.html");
     exit;
 }
-$sql="INSERT INTO kissalahjoitukset (user_id, username, donation_id, donation_amount, paymentMethod, donationDate) values (?, ?, ?, ?, ?, ?)";
+$sql="INSERT INTO kissalahjoitukset (user_id, username, donation_id, donation_amount, paymentMethod, donationDate) VALUES (?, ?, ?, ?, ?, ?)";
 
 $stmt=mysqli_prepare($yhteys, $sql);
 
