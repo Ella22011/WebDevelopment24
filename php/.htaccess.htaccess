@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Määritetään suojattava sivu
+RewriteCond %{REQUEST_URI} ^/donate\.php$
+
+# Tarkistetaan, onko käyttäjä kirjautunut sisään
+RewriteCond %{HTTP_COOKIE} !loggedin=true
+
+# Ohjaa käyttäjän kirjautumissivulle
+RewriteRule ^ /login.php [L,R=302]
