@@ -46,6 +46,51 @@
         <input type="date" id="donationDate" name="donationDate"><br><br>
         <input type="submit" value="Submit your donation">
     </form>
+    <script> 
+
+        document.addEventListener('DOMContentLoaded', function () { 
+    
+            // Näytä linkki vain, jos käyttäjä on kirjautunut sisään 
+    
+            const isLoggedIn = <?php echo isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 'true' : 'false'; ?>; 
+    
+            const logoutLi = document.getElementById('logout-li'); 
+    
+            if (isLoggedIn) { 
+    
+                logoutLi.style.display = 'block'; 
+    
+            } else { 
+    
+                logoutLi.style.display = 'none'; 
+    
+            } 
+    
+        }); 
+    
+    </script>  
+    
+     
+    
+     <?php 
+    
+        session_start(); 
+    
+     
+    
+        // Tarkista, onko käyttäjä kirjautunut sisään 
+    
+        if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){ 
+    
+        // Jos käyttäjä ei ole kirjautunut sisään, ohjaa hänet kirjautumissivulle 
+    
+        header("location: ./login.html"); 
+    
+        exit; 
+    
+    }  
+    
+    ?> 
 
     <h2></h2>
     <img src="../images/websiteDividerPic.png" class="websiteDivider" alt="Pawprints">
