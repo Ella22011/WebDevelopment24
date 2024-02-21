@@ -10,6 +10,6 @@ unset($_SESSION["username"]);
 session_destroy();
 
 // Ohjaa käyttäjä takaisin kirjautumissivulle
-header("Location: ../pages/login.html");
+header("Location: ../pages/login.php");
 exit;
 ?>
