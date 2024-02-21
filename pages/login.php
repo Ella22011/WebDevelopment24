@@ -21,14 +21,23 @@
                 <li><a href="../pages/about.html">About us</a></li>
                 <li><a href="../pages/signup.html">Sign up</a></li>
                 <li><a href="../pages/login.html">Log in</a></li>
-        </ul>
-        <form>
-            <input type="text" placeholder="Search" aria-label="Search">
-            <button type="submit">Search</button>
-        </form>
-    </nav>
+            </ul>
+            <form>
+                <input type="text" placeholder="Search" aria-label="Search">
+                <button type="submit">Search</button>
+            </form>
+        </nav>
+<?php
+session_start();
+
+if (isset($_SESSION["user_ok"])) {
+    header("Location:./donate.php");
+    exit;
+}
+
+?>
 <h2></h2>
-<form class="form" method="post" action="">
+<form class="form" method="post" action="../php/loginauth.php">
     <h2>Login</h2>
     <label for="username">Username:</label><br>
     <input type="text" id="username" name="username"><br>
