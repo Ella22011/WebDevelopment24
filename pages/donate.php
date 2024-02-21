@@ -1,6 +1,13 @@
 <?php
 session_start();
 
+// Tarkista, onko käyttäjä kirjautunut sisään
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    // Käyttäjä ei ole kirjautunut sisään, ohjataan kirjautumissivulle
+    header("Location: ./login.php");
+    exit;
+}
+
 $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? "./donate.php" : "./donatepage.html";
 ?>
 <!DOCTYPE html>
