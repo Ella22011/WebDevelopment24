@@ -52,6 +52,7 @@ if ($stmt) {
     mysqli_stmt_close($stmt);
 }
 
+
 // Suljetaan tietokantayhteys
 mysqli_close($yhteys);
 
