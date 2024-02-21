@@ -14,28 +14,16 @@
     <nav id="main-nav">
         <ul>
             <li>
-                <a class="navbar-brand" href="../index.html">
-                    <img src="../images/catLogo.png" alt="logo" height="50" width="auto">
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/catLogo.png" alt="logo" height="50" width="auto">
                 </a>
             </li>
-            <li><a href="../index.php">Home</a></li>
-            <li><a href="../pages/cats.php">Cats</a></li>
-            <li><a href="../pages/donatepage.html">Donate</a></li>
-            <li><a href="../pages/about.php">About us</a></li>
-            <li><a href="../pages/signup.php">Sign up</a></li>
-            <?php
-            // Aloita istunto
-            session_start();
-    
-            // Tarkista, onko käyttäjä kirjautunut sisään
-            if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-                // Näytä log out -painike
-                echo '<li><a href="../php/logout.php">Log out</a></li>';
-            } else {
-                // Näytä kirjaudu sisään -painike
-                echo '<li><a href="../pages/login.php">Log in</a></li>';
-            }
-            ?>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="pages/cats.php">Cats</a></li>
+            <li><a href="pages/donatepage.html">Donate</a></li>
+            <li><a href="pages/about.php">About us</a></li>
+            <li><a href="pages/signup.php">Sign up</a></li>
+            <li><a href="pages/login.php">Log in</a></li>
         </ul>
         <form>
             <input type="text" placeholder="Search" aria-label="Search">

@@ -1,3 +1,9 @@
+<?php
+session_start();
+
+$donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? "./donate.php" : "./donatepage.html";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +15,6 @@
   <title>Cat Distribution System - Cats</title>
   <link rel="stylesheet" href="../css/styles-jemina.css">
 </head>
-
 <body>
   <nav id="main-nav">
     <ul>
@@ -19,11 +24,23 @@
         </a>
       <li><a href="../index.php">Home</a></li>
       <li><a href="../pages/cats.php">Cats</a></li>
-      <li><a href="../pages/donatepage.html">Donate</a></li>
+      <li><a href="<?php echo $donate_page; ?>">Donate</a></li>
       <li><a href="../pages/about.php">About us</a></li>
       <li><a href="../pages/signup.php">Sign up</a></li>
-      <li><a href="../pages/login.php">Log in</a></li>
-      <li><a href="../salainen/registeredusers.html">Log in</a></li>
+      <?php
+        $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? "/donate.php" : "/donatepage.html";
+
+        // Tarkista, onko käyttäjä kirjautunut sisään
+        if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+            // Näytä log out -painike
+            echo '<li><a href="../php/logout.php">Log out</a></li>';
+            // Näytä "Registered Users" -linkki
+            echo '<li><a href="../salainen/registeredusers.html">Registered Users</a></li>';
+        } else {
+            // Näytä kirjaudu sisään -painike
+            echo '<li><a href="../pages/login.php">Log in</a></li>';
+        }
+        ?>
     </ul>
     <form>
       <input type="text" placeholder="Search" aria-label="Search">

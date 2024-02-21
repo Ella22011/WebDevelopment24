@@ -31,9 +31,11 @@
         if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
             // Näytä log out -painike
             echo '<li><a href="../php/logout.php">Log out</a></li>';
+            // Näytä "Registered Users" -linkki
+            echo '<li><a href="../salainen/registeredusers.html">Registered Users</a></li>';
         } else {
             // Näytä kirjaudu sisään -painike
-            echo '<li><a href="./login.php">Log in</a></li>';
+            echo '<li><a href="../pages/login.php">Log in</a></li>';
         }
         ?>
     </ul>
