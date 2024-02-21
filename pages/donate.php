@@ -48,7 +48,7 @@
     // Tarkista, onko käyttäjä kirjautunut sisään
     if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     // Jos käyttäjä ei ole kirjautunut sisään, ohjaa hänet kirjautumissivulle
-    header("location: login.html");
+    header("location: ./login.html");
     exit;
 }
 ?>

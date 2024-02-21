@@ -4,6 +4,7 @@ include ("./connect.php");
 $user_id=isset($_POST["user_id"]) ? $_POST["user_id"] :"0";
 $username=isset($_POST["username"]) ? $_POST["username"] :"";
 $donation_id=isset($_POST["donation_id"]) ? $_POST["donation_id"] : "0";
+$sonation_amount=isset($_POST["donation_amount"]) ? $_POST["donation_amount"] :"";
 $paymentMethod=isset($_POST["paymentMethod"]) ? $_POST["paymentMethod"] :"";
 $donationDate = isset($_POST["donationDate"]) ? date('Y-m-d', strtotime($_POST["donationDate"])) : "";
 
