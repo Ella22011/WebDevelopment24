@@ -54,8 +54,8 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
         <input type="text" id="username" name="username"><br>
         <label for="donation_amount">Donation Amount(€):</label><br>
         <input type="number" id="donation_amount" name="donation_amount" step="0"><br>
-        <label for="paymentMethod">Payment Method:</label>
-        <select id="paymentMethod" name="paymentMethod">
+        <label for="paymentMethod">Payment Method:</label><br>
+        <select id="paymentMethod" name="paymentMethod"><br>
             <option value="mobilepay">MobilePay</option>
             <option value="creditCard">Credit Card</option>
             <option value="paypal">PayPal</option>
