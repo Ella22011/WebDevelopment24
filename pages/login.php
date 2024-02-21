@@ -30,8 +30,8 @@
 <?php
 session_start();
 
-if (isset($_SESSION["user_ok"])) {
-    header("Location:./donate.php");
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+    header("Location:../pages/donate.php");
     exit;
 }
 
