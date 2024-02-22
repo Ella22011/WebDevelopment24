@@ -42,8 +42,8 @@ if (mysqli_num_rows($result) > 0) {
     // Kirjataan käyttäjä automaattisesti sisään
     $_SESSION['user'] = $username;
 
-    // Ohjataan käyttäjä kirjautumissivulle
-    header("Location:../pages/donate.html");
+    // Ohjataan käyttäjä lahjoitus sivulle
+    header("Location:../pages/donate.php");
     exit;
 }
 ?>
