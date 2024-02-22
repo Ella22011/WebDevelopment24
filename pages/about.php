@@ -44,11 +44,6 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
         ?>
     </ul>
     <p><h2><strong>Cat Distribution System</strong></h2></p>
-    <li>
-            <a class="navbar-brand" href="../index.html">
-                <img src="../images/catLogo.png" alt="logo" height="50" width="auto">
-            </a>
-        </li>
 </nav>
 
     <main class="homepage">
