@@ -56,26 +56,27 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
     <header class="profilehead">
         <h1>Welcome to your profile</h1>
     </header>
-    <div class="form">
-        <h2>Profile</h2>
-        <?php include('../php/printprofile.php'); ?>
-    </div>
+    <div class="form-container">
+        <div class="form">
+            <h2>Profile</h2>
+            <?php include('../php/printprofile.php'); ?>
+        </div>
 
-    <form class="form" action="../php/updateprofile.php" method="post">
-        <h2>Edit Profile</h2>
-        <?php
-        // Tarkista, onko käyttäjä kirjautunut sisään
-        if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-            // Hae käyttäjän tiedot tietokannasta
-            // Voit käyttää samaa tietokantayhteyttä connect.php-tiedostosta
-            $stmt = $yhteys->prepare("SELECT fName, lName, email, username FROM users WHERE user_id = ?");
-            $stmt->bind_param("i", $_SESSION['user_id']);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            $user = $result->fetch_assoc();
+        <form class="form" action="../php/updateprofile.php" method="post">
+            <h2>Edit Profile</h2>
+            <?php
+            // Tarkista, onko käyttäjä kirjautunut sisään
+            if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                // Hae käyttäjän tiedot tietokannasta
+                // Voit käyttää samaa tietokantayhteyttä connect.php-tiedostosta
+                $stmt = $yhteys->prepare("SELECT fName, lName, email, username FROM users WHERE user_id = ?");
+                $stmt->bind_param("i", $_SESSION['user_id']);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $user = $result->fetch_assoc();
 
-            // Näytä käyttäjän tiedot lomakkeella, jotta niitä voi muokata
-            echo '
+                // Näytä käyttäjän tiedot lomakkeella, jotta niitä voi muokata
+                echo '
             <label for="fName">First Name:</label><br>
             <input type="text" id="fName" name="fName" value="' . $user['fName'] . '"><br>
             <label for="lName">Last Name:</label><br>
@@ -85,15 +86,15 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
             <label for="username">Username:</label><br>
             <input type="text" id="username" name="username" value="' . $user['username'] . '"><br>
             <input type="submit" value="Save Changes">';
-        }
-        ?>
-    </form>
-    <div class="form">
-        <h2>Your donations</h2>
-        <?php
-        include("../php/dinfo.php");
-        ?>
-    </div>
+            }
+            ?>
+        </form>
+        <div class="form">
+            <h2>Your donations</h2>
+            <?php
+            include("../php/dinfo.php");
+            ?>
+        </div>
     </div>
 
     <img src="../images/websiteDividerPic.png" class="websiteDivider" alt="Pawprints">
