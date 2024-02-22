@@ -58,7 +58,6 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
                 about distribution; it's about fostering meaningful connections between cats and the families ready to
                 welcome them with open arms.</p>
         </article>
-        <img src="../images/websiteDividerPic.png" class="websiteDivider" alt="Pawprints">
         <article id="C2">
             <h1>Contact us</h1>
             <p>
@@ -76,6 +75,7 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
             <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
             <p>Saturday - Sunday: Closed</p>
         </article>
+        <img src="../images/websiteDividerPic.png" class="websiteDivider" alt="Pawprints">
     </main>
 
     <footer class="footer">
