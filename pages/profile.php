@@ -1,4 +1,6 @@
 <?php
+include("../php/connect.php");
+
 session_start();
 
 $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? "./donate.php" : "./donatepage.html";
@@ -56,8 +58,8 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
        if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
             // Hae käyttäjän tiedot tietokannasta
             // Voit käyttää samaa tietokantayhteyttä connect.php-tiedostosta
-            $stmt = $yhteys->prepare("SELECT fName, lName, email, username FROM users WHERE id = ?");
-            $stmt->bind_param("i", $_SESSION['id']);
+            $stmt = $yhteys->prepare("SELECT fName, lName, email, username FROM users WHERE user_id = ?");
+            $stmt->bind_param("i", $_SESSION['user_id']);
             $stmt->execute();
             $result = $stmt->get_result();
             $user = $result->fetch_assoc();

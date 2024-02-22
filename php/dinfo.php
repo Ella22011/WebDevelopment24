@@ -21,7 +21,6 @@ $result = mysqli_stmt_get_result($stmt);
 
 //Näytä käyttäjän lahjoitukset
 while ($row = mysqli_fetch_assoc($result)) {
-    echo "Donation ID: " . $row['donation_id'] . "<br>";
     echo "Amount: " . $row['donation_amount'] . "<br>";
     echo "Payment Method: " . $row['paymentMethod'] . "<br>";
     echo "Date: " . $row['donationDate'] . "<br>";
