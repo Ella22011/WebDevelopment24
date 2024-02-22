@@ -52,8 +52,8 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     <article><h2><strong>Cat Distribution System</strong></h2></article>
 </nav>
 
-    <h2></h2>
-    <form class="form" action="../php/signup.php" method="post">
+   
+    <form class="form2" action="../php/signup.php" method="post">
        <h2>Sign Up to Donate</h2> 
        <label for="fName">First Name:</label><br>
         <input type="text" id="fName" name="fName"><br>
@@ -68,7 +68,6 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
         <input type="submit" value="Sign up">
     </form>
 
-    <h2></h2>
     <img src="../images/websiteDividerPic.png" class="websiteDivider" alt="Pawprints">
 
 </body>

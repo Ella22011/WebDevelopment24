@@ -50,8 +50,7 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
     </ul>
     <article><h2><strong>Cat Distribution System</strong></h2></article>
 </nav>
-    <h2></h2>
-    <form class="form" method="post" action="../php/form.php">
+    <form class="form2" method="post" action="../php/form.php">
         <h2>Donate</h2>
         <label for="donation_amount">Donation Amount(€):</label><br>
         <input type="number" id="donation_amount" name="donation_amount" step="0"><br>
@@ -66,8 +65,6 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
         <input type="submit" value="Submit your donation">
     </form>
     
-
-    <h2></h2>
     <img src="../images/websiteDividerPic.png" class="websiteDivider" alt="Pawprints">
 </body>
 </html>

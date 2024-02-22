@@ -18,47 +18,51 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
 </head>
 
 <body>
-<nav id="main-nav">
-    <ul>
-        <li>
-            <a class="navbar-brand" href="../index.html">
-                <img src="../images/catLogo.png" alt="logo" height="50" width="auto">
-            </a>
-        </li>
-        <li><a href="../index.php">Home</a></li>
-        <li><a href="../pages/cats.php">Cats</a></li>
-        <li><a href="<?php echo $donate_page; ?>">Donate</a></li>
-        <li><a href="../pages/about.php">About us</a></li>
-        <li><a href="../pages/signup.php">Sign up</a></li>
+    <nav id="main-nav">
+        <ul>
+            <li>
+                <a class="navbar-brand" href="../index.html">
+                    <img src="../images/catLogo.png" alt="logo" height="50" width="auto">
+                </a>
+            </li>
+            <li><a href="../index.php">Home</a></li>
+            <li><a href="../pages/cats.php">Cats</a></li>
+            <li><a href="<?php echo $donate_page; ?>">Donate</a></li>
+            <li><a href="../pages/about.php">About us</a></li>
+            <li><a href="../pages/signup.php">Sign up</a></li>
+            <?php
+            // Tarkista, onko käyttäjä kirjautunut sisään
+            if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                // Näytä log out -painike
+                echo '<li><a href="../php/logout.php">Log out</a></li>';
+                // Näytä "Registered Users" -linkki
+                echo '<li><a href="../salainen/registeredusers.html">Registered Users</a></li>';
+                //Näytä "Profile" -linkki
+                echo '<li><a href="./profile.php">Profile</a></li>';
+            } else {
+                // Näytä kirjaudu sisään -painike
+                echo '<li><a href="../pages/login.php">Log in</a></li>';
+            }
+            ?>
+        </ul>
+        <article>
+            <h2><strong>Cat Distribution System</strong></h2>
+        </article>
+    </nav>
+    <header class="profilehead">
+        <h1>Welcome to your profile</h1>
+    </header>
+    <div class="form-container">  
+    <div class="form">
+    <h2>Profile</h2>
+        <?php include('../php/printprofile.php'); ?>
+    </div>
+
+    <form class="form" action="updateprofile.php" method="post">
+        <h2>Edit Profile</h2>
         <?php
         // Tarkista, onko käyttäjä kirjautunut sisään
         if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-            // Näytä log out -painike
-            echo '<li><a href="../php/logout.php">Log out</a></li>';
-            // Näytä "Registered Users" -linkki
-            echo '<li><a href="../salainen/registeredusers.html">Registered Users</a></li>';
-            //Näytä "Profile" -linkki
-            echo '<li><a href="./profile.php">Profile</a></li>';
-        } else {
-            // Näytä kirjaudu sisään -painike
-            echo '<li><a href="../pages/login.php">Log in</a></li>';
-        }
-        ?>
-    </ul>
-    <article><h2><strong>Cat Distribution System</strong></h2></article>
-</nav>
-<header class="profilehead">
-<h1>Welcome to your profile</h1>
-</header>
-<div class="container">
-    <?php include('../php/printprofile.php'); ?>
-</div>
-    
-    <form class="form" action="updateprofile.php" method="post">
-       <h2>Edit Profile</h2> 
-       <?php
-       // Tarkista, onko käyttäjä kirjautunut sisään
-       if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
             // Hae käyttäjän tiedot tietokannasta
             // Voit käyttää samaa tietokantayhteyttä connect.php-tiedostosta
             $stmt = $yhteys->prepare("SELECT fName, lName, email, username FROM users WHERE user_id = ?");
@@ -81,11 +85,14 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
         }
         ?>
     </form>
-    <?php
-    include("../php/dinfo.php");
-    ?>
+    <div class="form">
+    <h2>Your donations</h2>
+        <?php
+        include("../php/dinfo.php");
+        ?>
+    </div>
+</div>
 
-    <h2></h2>
     <img src="../images/websiteDividerPic.png" class="websiteDivider" alt="Pawprints">
 
 </body>
