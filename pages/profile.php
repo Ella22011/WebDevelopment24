@@ -44,10 +44,6 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
         ?>
     </ul>
 </nav>
-<?php
-echo '<h1>Welcome to your profile</h1>';
-echo '<p>Username: ' . $_SESSION['username'] . '</p>';
-?>
     
     <form class="form" action="updateprofile.php" method="post">
        <h2>Edit Profile</h2> 
