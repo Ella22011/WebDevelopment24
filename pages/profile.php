@@ -44,6 +44,10 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
         ?>
     </ul>
 </nav>
+<div class="container">
+    <h1>Welcome to your profile</h1>
+    <?php include('../php/printprofile.php'); ?>
+</div>
     
     <form class="form" action="updateprofile.php" method="post">
        <h2>Edit Profile</h2> 
