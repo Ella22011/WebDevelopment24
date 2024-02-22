@@ -112,13 +112,3 @@ body {
         margin-bottom: 10px;
     }
 }
-.contact-box {
-    background-color: #fbedf4;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 0 8px;
-    max-width: 500px;
-    margin: auto;
-    display: block;
-    margin-bottom: 20px;
-}
