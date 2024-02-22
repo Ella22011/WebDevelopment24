@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once "./connect.php"; // Sisällytetään tietokantayhteyden määrittely
+include "./connect.php"; // Sisällytetään tietokantayhteyden määrittely
 
 // Tarkista, onko käyttäjä kirjautunut sisään
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
