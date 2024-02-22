@@ -82,6 +82,9 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
         }
         ?>
     </form>
+    <?php
+    include("../php/dinfo.php");
+    ?>
 
     <h2></h2>
     <img src="../images/websiteDividerPic.png" class="websiteDivider" alt="Pawprints">
