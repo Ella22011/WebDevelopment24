@@ -67,8 +67,6 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
             <input type="text" id="email" name="email" value="' . $user['email'] . '"><br><br>
             <label for="username">Username:</label><br>
             <input type="text" id="username" name="username" value="' . $user['username'] . '"><br>
-            <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password"><br>
             <input type="submit" value="Save Changes">';
         }
         ?>
