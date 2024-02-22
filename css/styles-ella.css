@@ -113,15 +113,12 @@ body {
     }
 }
 .contact-box {
-    text-align: center;
-    max-width: 800px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     background-color: #fbedf4;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 0 8px;
+    max-width: 800px;
+    margin: auto;
+    display: block;
     margin-bottom: 20px;
 }
