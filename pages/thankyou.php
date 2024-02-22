@@ -41,7 +41,13 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
       <button type="submit">Search</button>
     </form>
   </nav>
+  <div class="header">
     <h1>Thank you for your donation!</h1>
     <p>We greatly appreciate your generosity.</p>
+    <img src="../images/kisukuva.jpg" class="thankyouimg" alt="Laying cat">
+</div>
+<footer class="footer">
+  <img src="../images/websiteDividerPic.png" class="websiteDivider" alt="Pawprints">
+  </footer>
 </body>
 </html>
