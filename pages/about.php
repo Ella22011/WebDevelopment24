@@ -43,7 +43,7 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
         }
         ?>
     </ul>
-    <article><p>Cat Distribution System</p></article>
+    <article><h3><strong>Cat Distribution System</strong></h3></article>
 </nav>
 
     <main class="homepage">
