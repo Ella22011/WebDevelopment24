@@ -34,13 +34,19 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
         <li><a href="../pages/about.php">About us</a></li>
         <li><a href="../pages/signup.php">Sign up</a></li>
         <?php
-        if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-            echo '<li id="logout-li"><a id="logout-link" href="../php/logout.php">Log out</a></li>';
+        // Tarkista, onko käyttäjä kirjautunut sisään
+        if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+            // Näytä log out -painike
+            echo '<li><a href="../php/logout.php">Log out</a></li>';
+            // Näytä "Registered Users" -linkki
+            echo '<li><a href="../salainen/registeredusers.html">Registered Users</a></li>';
+            //Näytä "Profile" -linkki
+            echo '<li><a href="./profile.php">Profile</a></li>';
         } else {
+            // Näytä kirjaudu sisään -painike
             echo '<li><a href="../pages/login.php">Log in</a></li>';
         }
         ?>
-        <li><a href="../salainen/registeredusers.html">Registered Users</a></li>
     </ul>
     <form>
         <input type="text" placeholder="Search" aria-label="Search">
