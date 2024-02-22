@@ -45,7 +45,7 @@ $stmt = mysqli_prepare($yhteys, $sql);
 // Tarkistetaan, onnistuuko SQL-kyselyn suorittaminen
 if ($stmt) {
     // Liitetään parametrit SQL-kyselyyn ja suoritetaan se
-    mysqli_stmt_bind_param($stmt, "isss", $username, $donation_amount, $paymentMethod, $donationDate, $username);
+    mysqli_stmt_bind_param($stmt, "siss", $username, $donation_amount, $paymentMethod, $donationDate, $username);
     mysqli_stmt_execute($stmt);
 
     // Suljetaan SQL-kysely
