@@ -1,25 +1,20 @@
 <?php
 session_start();
 
-// Tarkista, onko käyttäjä kirjautunut sisään
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-    // Käyttäjä ei ole kirjautunut sisään, ohjataan kirjautumissivulle
-    header("Location: ./login.php");
-    exit;
-}
-
 $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? "./donate.php" : "./donatepage.html";
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donate</title>
     <meta name="description" content="Cat Distribution System, your local cat adoption shelter.">
     <link rel="icon" type="image/x-icon" href="../images/favicon-32x32.png">
+    <title>Cat Distribution System - About Us</title>
     <link rel="stylesheet" href="../css/styles-ella.css">
 </head>
+
 <body>
 <nav id="main-nav">
     <ul>
@@ -50,24 +45,44 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
     </ul>
     <article><h2><strong>Cat Distribution System</strong></h2></article>
 </nav>
-    <h2></h2>
-    <form class="form" method="post" action="../php/form.php">
-        <h2>Donate</h2>
-        <label for="donation_amount">Donation Amount(€):</label><br>
-        <input type="number" id="donation_amount" name="donation_amount" step="0"><br>
-        <label for="paymentMethod">Payment Method:</label><br>
-        <select id="paymentMethod" name="paymentMethod"><br>
-            <option value="mobilepay">MobilePay</option>
-            <option value="creditCard">Credit Card</option>
-            <option value="paypal">PayPal</option>
-        </select><br>
-        <label for="donationDate">Date:</label><br>
-        <input type="date" id="donationDate" name="donationDate"><br><br>
-        <input type="submit" value="Submit your donation">
-    </form>
-    
 
-    <h2></h2>
-    <img src="../images/websiteDividerPic.png" class="websiteDivider" alt="Pawprints">
+    <main class="homepage">
+        <article id="C1">
+            <h1>About us</h1>
+            <p>We're dedicated to ensuring that every cat finds a loving and caring home. We've witnessed heartwarming
+                instances where stray cats seem to choose or adopt their human companions. In these cases, a cat,
+                whether lost or seeking a new home, finds its way into the hearts of individuals willing to provide
+                care. Veterinary websites offer guidance on what to do when an unknown feline enters your life. Our
+                focus is on creating a platform where cats in need can find their way into loving homes. It's not just
+                about distribution; it's about fostering meaningful connections between cats and the families ready to
+                welcome them with open arms.</p>
+        </article>
+<div>
+    <article id="C2">
+        <h1>Contact us</h1>
+        <p>
+            Got questions, concerns, or just want to talk cats? We're all ears! Reach out to us using the contact
+            information below:
+        </p>
+        <h3>Contact Information</h3>
+        <p>Email: info@catdistribution.com</p>
+        <p>Phone: 123-456-7890</p>
+
+        <h3>Visit Our Office</h3>
+        <p>Address: 123 Cat Street, Kittyville, CA 12345</p>
+
+        <h3>Business Hours</h3>
+        <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
+        <p>Saturday - Sunday: Closed</p>
+    </article>
+</div>
+        <img src="../images/websiteDividerPic.png" class="websiteDivider" alt="Pawprints">
+    </main>
+
+    <footer class="footer">
+        <a href="#main-nav">Back to top</a>
+    </footer>
+
 </body>
+
 </html>

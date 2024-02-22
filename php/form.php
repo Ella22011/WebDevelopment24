@@ -1,28 +1,54 @@
 <?php
-include ("./connect.php");
+session_start();
 
-$user_id=isset($_POST["user_id"]) ? $_POST["user_id"] :"0";
-$username=isset($_POST["username"]) ? $_POST["username"] :"";
-$donation_id=isset($_POST["donation_id"]) ? $_POST["donation_id"] : "0";
-$paymentMethod=isset($_POST["paymentMethod"]) ? $_POST["paymentMethod"] :"";
-$donationDate = isset($_POST["donationDate"]) ? date('Y-m-d', strtotime($_POST["donationDate"])) : "";
+// Tarkista, onko käyttäjä kirjautunut sisään
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    // Jos käyttäjä ei ole kirjautunut sisään, ohjataan kirjautumissivulle
+    header("Location: ../pages/login.php");
+    exit;
+}
 
-
-if (empty($user_id) || empty($username) || empty($donation_id) || empty($paymentMethod) || empty($donationDate)){
+// Tarkista, onko tarvittavat tiedot saatu lomakkeelta
+if (isset($_POST["donation_amount"]) && isset($_POST["paymentMethod"]) && isset($_POST["donationDate"])) {
+    $donation_amount = $_POST["donation_amount"];
+    $paymentMethod = $_POST["paymentMethod"];
+    $donationDate = $_POST["donationDate"];
+    // Haetaan käyttäjänimi istunnosta
+    $username = $_SESSION["username"];
+} else {
+    // Jos tarvittavia tietoja ei ole saatu, ohjataan lahjoitussivulle
     header("Location:../pages/donate.html");
     exit;
 }
-$sql="INSERT INTO kissalahjoitukset (user_id, username, donation_id, paymentMethod, donationDate) values (?, ?, ?, ?, ?)";
 
-$stmt=mysqli_prepare($yhteys, $sql);
+include("./connect.php"); // Yhdistä tietokantaan
 
-mysqli_stmt_bind_param($stmt, 'isiiss', $user_id, $username, $donation_id, $paymentMethod, $donationDate);
+// Haetaan user_id käyttäjänimen perusteella
+$user_query = "SELECT user_id FROM users WHERE username = ?";
+$user_stmt = mysqli_prepare($yhteys, $user_query);
+mysqli_stmt_bind_param($user_stmt, "s", $username);
+mysqli_stmt_execute($user_stmt);
+mysqli_stmt_bind_result($user_stmt, $user_id);
+mysqli_stmt_fetch($user_stmt);
+mysqli_stmt_close($user_stmt);
 
-mysqli_stmt_execute($stmt);
+// Tallennetaan tiedot tietokantaan
+$sql = "INSERT INTO catdonations (user_id, username, donation_amount, paymentMethod, donationDate) VALUES (?, ?, ?, ?, ?)";
+$stmt = mysqli_prepare($yhteys, $sql);
 
+// Tarkista, onnistuuko SQL-kyselyn suorittaminen
+if ($stmt) {
+    // Liitetään parametrit SQL-kyselyyn ja suoritetaan se
+    mysqli_stmt_bind_param($stmt, "issss", $user_id, $username, $donation_amount, $paymentMethod, $donationDate);
+    mysqli_stmt_execute($stmt);
+    // Suljetaan SQL-kysely
+    mysqli_stmt_close($stmt);
+}
+
+// Suljetaan tietokantayhteys
 mysqli_close($yhteys);
 
-header("Location:../pages/thankyou.html");
-
+// Ohjataan käyttäjä kiitos-sivulle
+header("Location:../pages/thankyou.php");
 exit;
 ?>

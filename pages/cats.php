@@ -1,3 +1,9 @@
+<?php
+session_start();
+
+$donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? "./donate.php" : "./donatepage.html";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +15,6 @@
   <title>Cat Distribution System - Cats</title>
   <link rel="stylesheet" href="../css/styles-jemina.css">
 </head>
-
 <body>
   <nav id="main-nav">
     <ul>
@@ -17,18 +22,27 @@
         <a class="navbar-brand" href="../index.html">
           <img src="../images/catLogo.png" alt="logo" height="50" width="auto">
         </a>
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="../pages/cats.html">Cats</a></li>
-      <li><a href="../pages/donatepage.html">Donate</a></li>
-      <li><a href="../pages/about.html">About us</a></li>
-      <li><a href="../pages/signup.html">Sign up</a></li>
-      <li><a href="../pages/login.html">Log in</a></li>
-      <li><a href="../salainen/registeredusers.html">Log in</a></li>
+      <li><a href="../index.php">Home</a></li>
+      <li><a href="../pages/cats.php">Cats</a></li>
+      <li><a href="<?php echo $donate_page; ?>">Donate</a></li>
+      <li><a href="../pages/about.php">About us</a></li>
+      <li><a href="../pages/signup.php">Sign up</a></li>
+      <?php
+        // Tarkista, onko käyttäjä kirjautunut sisään
+        if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+            // Näytä log out -painike
+            echo '<li><a href="../php/logout.php">Log out</a></li>';
+            // Näytä "Registered Users" -linkki
+            echo '<li><a href="../salainen/registeredusers.html">Registered Users</a></li>';
+            //Näytä "Profile" -linkki
+            echo '<li><a href="./profile.php">Profile</a></li>';
+        } else {
+            // Näytä kirjaudu sisään -painike
+            echo '<li><a href="../pages/login.php">Log in</a></li>';
+        }
+        ?>
     </ul>
-    <form>
-      <input type="text" placeholder="Search" aria-label="Search">
-      <button type="submit">Search</button>
-    </form>
+    <article><h2><strong>Cat Distribution System</strong></h2></article>
   </nav>
 
   <div class="header">
@@ -36,8 +50,8 @@
     <p>We kindly request handling adoption matters exclusively via email at <a
         href="mailto:info@catdistribution.com">info@catdistribution.com</a>. The phone line for Cat Distribution is
       primarily reserved for urgent situations involving found cats.</p>
-    <p><strong>Please consider donating, all donations go towards our mission to give homeless cats loving homes. Click
-        <a href="donatepage.html">here </a>to donate today!</strong></p>
+    <p><strong>Please consider donating, all donations go towards our mission to give homeless cats loving homes.</strong>
+    </p>
   </div>
 
   <main class="catspage">

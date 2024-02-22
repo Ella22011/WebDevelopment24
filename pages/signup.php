@@ -1,30 +1,31 @@
 <?php
 session_start();
 
-// Tarkista, onko käyttäjä kirjautunut sisään
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-    // Käyttäjä ei ole kirjautunut sisään, ohjataan kirjautumissivulle
-    header("Location: ./login.php");
+$donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? "./donate.php" : "./donatepage.html";
+
+// Tarkista, onko käyttäjä kirjautunut sisään, jos on, ohjaa pois rekisteröintisivulta
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+    header("location: ../index.php");
     exit;
 }
-
-$donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? "./donate.php" : "./donatepage.html";
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <title>Register</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donate</title>
     <meta name="description" content="Cat Distribution System, your local cat adoption shelter.">
     <link rel="icon" type="image/x-icon" href="../images/favicon-32x32.png">
     <link rel="stylesheet" href="../css/styles-ella.css">
 </head>
+
 <body>
 <nav id="main-nav">
     <ul>
         <li>
-            <a class="navbar-brand" href="../index.html">
+            <a class="navbar-brand" href="../index.php">
                 <img src="../images/catLogo.png" alt="logo" height="50" width="auto">
             </a>
         </li>
@@ -50,24 +51,26 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
     </ul>
     <article><h2><strong>Cat Distribution System</strong></h2></article>
 </nav>
+
     <h2></h2>
-    <form class="form" method="post" action="../php/form.php">
-        <h2>Donate</h2>
-        <label for="donation_amount">Donation Amount(€):</label><br>
-        <input type="number" id="donation_amount" name="donation_amount" step="0"><br>
-        <label for="paymentMethod">Payment Method:</label><br>
-        <select id="paymentMethod" name="paymentMethod"><br>
-            <option value="mobilepay">MobilePay</option>
-            <option value="creditCard">Credit Card</option>
-            <option value="paypal">PayPal</option>
-        </select><br>
-        <label for="donationDate">Date:</label><br>
-        <input type="date" id="donationDate" name="donationDate"><br><br>
-        <input type="submit" value="Submit your donation">
+    <form class="form" action="../php/signup.php" method="post">
+       <h2>Sign Up to Donate</h2> 
+       <label for="fName">First Name:</label><br>
+        <input type="text" id="fName" name="fName"><br>
+        <label for="lName">Last Name:</label><br>
+        <input type="text" id="lName" name="lName"><br>
+        <label for="email">Email:</label><br>
+        <input type="text" id="email" name="email"><br><br>
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username"><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br>
+        <input type="submit" value="Sign up">
     </form>
-    
 
     <h2></h2>
     <img src="../images/websiteDividerPic.png" class="websiteDivider" alt="Pawprints">
+
 </body>
+
 </html>

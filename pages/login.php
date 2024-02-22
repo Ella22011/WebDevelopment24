@@ -15,20 +15,26 @@
                 <a class="navbar-brand" href="../index.html">
                     <img src="../images/catLogo.png" alt="logo" height="50" width="auto">
                 </a>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../pages/cats.html">Cats</a></li>
+                <li><a href="../index.php">Home</a></li>
+                <li><a href="../pages/cats.php">Cats</a></li>
                 <li><a href="../pages/donatepage.html">Donate</a></li>
-                <li><a href="../pages/about.html">About us</a></li>
-                <li><a href="../pages/signup.html">Sign up</a></li>
-                <li><a href="../pages/login.html">Log in</a></li>
-        </ul>
-        <form>
-            <input type="text" placeholder="Search" aria-label="Search">
-            <button type="submit">Search</button>
-        </form>
-    </nav>
+                <li><a href="../pages/about.php">About us</a></li>
+                <li><a href="../pages/signup.php">Sign up</a></li>
+                <li><a href="../pages/login.php">Log in</a></li>
+            </ul>
+            <article><h2><strong>Cat Distribution System</strong></h2></article>
+        </nav>
+<?php
+session_start();
+
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+    header("Location:../pages/donate.php");
+    exit;
+}
+
+?>
 <h2></h2>
-<form class="form" method="post" action="">
+<form class="form" method="post" action="../php/loginauth.php">
     <h2>Login</h2>
     <label for="username">Username:</label><br>
     <input type="text" id="username" name="username"><br>

@@ -76,6 +76,7 @@ body {
     align-items: center;
 }
 
+
 .image1 {
     margin: 20px 0;
     max-width: 40%;
@@ -86,6 +87,15 @@ body {
     width: 100%;
     height: auto;
 }
+
+.profilehead {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
 
 @media (max-width: 600px) {
     #main-nav {
