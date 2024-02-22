@@ -37,15 +37,15 @@ body {
 
 #main-nav a {
     text-decoration: none;
-    color: rgb(17, 16, 18);
+    color: #111012;
 }
 
 #main-nav a:hover {
-    color: rgb(255, 82, 243);
+    color: #ff52f3;
     text-decoration: underline;
 }
 #main-nav a:visited {
-    color: rgb(99, 0, 92);
+    color: #63005c;
     text-decoration: underline;
 }
 
