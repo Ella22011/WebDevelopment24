@@ -11,7 +11,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 
 include("./connect.php"); // Yhdistä tietokantaan
 
-$sql = "SELECT * FROM users WHERE username=?";
+$sql = "SELECT user_id, password FROM users WHERE username=?";
 
 $stmt = mysqli_prepare($yhteys, $sql);
 
@@ -34,6 +34,7 @@ if ($stmt) {
             // Aseta sessiomuuttuja osoittamaan, että käyttäjä on kirjautunut sisään
             $_SESSION["loggedin"] = true; // Asetetaan kirjautumistila
             $_SESSION["username"] = $username; // Asetetaan käyttäjänimi istuntoon tarvittaessa
+            $_SESSION["user_id"] = $row['user_id']; // Asetetaan user_id istuntoon
             // Ohjaa käyttäjä donate.php-sivulle
             header("Location: ../pages/donate.php");
             // Lopeta tämän skriptin suoritus
