@@ -103,6 +103,8 @@ body {
 .websiteDivider {
     width: 100%;
     height: auto;
+    margin-bottom: 15px;
+    margin-top: 5px;
 }
 
 .profilehead {

@@ -1,3 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Update</title>
+    <meta name="description" content="Update your profile">
+    <link rel="icon" type="image/x-icon" href="../images/favicon-32x32.png">
+    <link rel="stylesheet" href="../css/styles-ella.css">
+</head>
+<body>
+
+<nav id="main-nav">
+    <ul>
+        <li>
+            <a class="navbar-brand" href="../index.html">
+                <img src="../images/catLogo.png" alt="logo" height="50" width="auto">
+            </a>
+        </li>
+        <li><a href="../index.php">Home</a></li>
+        <li><a href="../pages/cats.php">Cats</a></li>
+        <li><a href="<?php echo $donate_page; ?>">Donate</a></li>
+        <li><a href="../pages/about.php">About us</a></li>
+        <li><a href="../pages/signup.php">Sign up</a></li>
+        <?php
+        if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+            echo '<li><a href="../php/logout.php">Log out</a></li>';
+            echo '<li><a href="../salainen/registeredusers.html">Registered Users</a></li>';
+            echo '<li><a href="./profile.php">Profile</a></li>';
+        } else {
+            echo '<li><a href="../pages/login.php">Log in</a></li>';
+        }
+        ?>
+    </ul>
+    <article><h2><strong>Cat Distribution System</strong></h2></article>
+</nav>
+
+
 <?php
 session_start();
 include "./connect.php"; // Sisällytetään tietokantayhteyden määrittely
@@ -21,3 +60,8 @@ $stmt->execute();
 
 echo "Tiedot päivitetty onnistuneesti!";
 ?>
+
+<img src="../images/websiteDividerPic.png" class="websiteDivider" alt="Pawprints">
+
+</body>
+</html>
