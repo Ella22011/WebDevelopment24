@@ -35,11 +35,7 @@ if (!empty($missing_fields)) {
 }
 
 // Tallennetaan tiedot tietokantaan
-$sql = "INSERT INTO catdonations (user_id, username, donation_amount, paymentMethod, donationDate) 
-        SELECT u.user_id, ?, ?, ?, ?
-        FROM users u
-        WHERE u.username = ?";
-
+$sql = "INSERT INTO catdonations (username, donation_amount, paymentMethod, donationDate) VALUES (?, ?, ?, ?)";
 $stmt = mysqli_prepare($yhteys, $sql);
 
 // Tarkistetaan, onnistuuko SQL-kyselyn suorittaminen
@@ -59,5 +55,3 @@ mysqli_close($yhteys);
 header("Location:../pages/thankyou.html");
 exit;
 ?>
-
-
