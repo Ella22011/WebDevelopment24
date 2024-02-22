@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? "./donate.php" : "./donatepage.html";
+$donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? "./pages/donate.php" : "./pages/donatepage.html";
 ?>
 
 <!DOCTYPE html>
