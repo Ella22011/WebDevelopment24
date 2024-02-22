@@ -1,12 +1,15 @@
 <?php
 include("../php/connect.php");
 
+
 session_start();
+
 
 $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? "./donate.php" : "./donatepage.html";
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 
 <head>
     <title>Profile</title>
@@ -16,6 +19,7 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
     <link rel="icon" type="image/x-icon" href="../images/favicon-32x32.png">
     <link rel="stylesheet" href="../css/styles-ella.css">
 </head>
+
 
 <body>
 <nav id="main-nav">
@@ -53,9 +57,9 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
 <div class="container">
     <?php include('../php/printprofile.php'); ?>
 </div>
-    
+   
     <form class="form" action="../php/updateprofile.php" method="post">
-       <h2>Edit Profile</h2> 
+       <h2>Edit Profile</h2>
        <?php
        // Tarkista, onko käyttäjä kirjautunut sisään
        if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
@@ -66,6 +70,7 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
             $stmt->execute();
             $result = $stmt->get_result();
             $user = $result->fetch_assoc();
+
 
             // Näytä käyttäjän tiedot lomakkeella, jotta niitä voi muokata
             echo '
@@ -89,8 +94,11 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
     </div>
 </div>
 
+
     <img src="../images/websiteDividerPic.png" class="websiteDivider" alt="Pawprints">
 
+
 </body>
+
 
 </html>
