@@ -1,49 +1,46 @@
 <?php
-include ("./connect.php");
+session_start();
 
-// Otetaan lomakkeelta saadut tiedot
-$username = isset($_POST["username"]) ? $_POST["username"] : "";
-$donation_amount = isset($_POST["donation_amount"]) ? $_POST["donation_amount"] : "";
-$paymentMethod = isset($_POST["paymentMethod"]) ? $_POST["paymentMethod"] : "";
-$donationDate = isset($_POST["donationDate"]) ? $_POST["donationDate"] : "";
-
-// Alustetaan tyhjä lista puuttuvien kenttien virheilmoituksille
-$missing_fields = [];
-
-// Tarkistetaan, että kaikki tarvittavat tiedot ovat saatavilla
-if (empty($username)) {
-    $missing_fields[] = "Username";
-}
-if (empty($donation_amount)) {
-    $missing_fields[] = "Donation Amount";
-}
-if (empty($paymentMethod)) {
-    $missing_fields[] = "Payment Method";
-}
-if (empty($donationDate)) {
-    $missing_fields[] = "Donation Date";
-}
-
-// Tarkistetaan, onko puuttuvia kenttiä
-if (!empty($missing_fields)) {
-    // Rakennetaan virheilmoitus puuttuvista kentistä
-    $error_message = "Please fill in the following fields: " . implode(", ", $missing_fields);
-    
-    // Uudelleenohjataan käyttäjä lahjoitussivulle virheilmoituksen kanssa
-    header("Location:../pages/donate.html?error=" . urlencode($error_message));
+// Tarkista, onko käyttäjä kirjautunut sisään
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    // Jos käyttäjä ei ole kirjautunut sisään, ohjataan kirjautumissivulle
+    header("Location: ../pages/login.php");
     exit;
 }
 
+// Tarkista, onko tarvittavat tiedot saatu lomakkeelta
+if (isset($_POST["donation_amount"]) && isset($_POST["paymentMethod"]) && isset($_POST["donationDate"])) {
+    $donation_amount = $_POST["donation_amount"];
+    $paymentMethod = $_POST["paymentMethod"];
+    $donationDate = $_POST["donationDate"];
+    // Haetaan käyttäjänimi istunnosta
+    $username = $_SESSION["username"];
+} else {
+    // Jos tarvittavia tietoja ei ole saatu, ohjataan lahjoitussivulle
+    header("Location:../pages/donate.html");
+    exit;
+}
+
+include("./connect.php"); // Yhdistä tietokantaan
+
+// Haetaan user_id käyttäjänimen perusteella
+$user_query = "SELECT user_id FROM users WHERE username = ?";
+$user_stmt = mysqli_prepare($yhteys, $user_query);
+mysqli_stmt_bind_param($user_stmt, "s", $username);
+mysqli_stmt_execute($user_stmt);
+mysqli_stmt_bind_result($user_stmt, $user_id);
+mysqli_stmt_fetch($user_stmt);
+mysqli_stmt_close($user_stmt);
+
 // Tallennetaan tiedot tietokantaan
-$sql = "INSERT INTO catdonations (username, donation_amount, paymentMethod, donationDate) VALUES (?, ?, ?, ?)";
+$sql = "INSERT INTO catdonations (user_id, username, donation_amount, paymentMethod, donationDate) VALUES (?, ?, ?, ?, ?)";
 $stmt = mysqli_prepare($yhteys, $sql);
 
-// Tarkistetaan, onnistuuko SQL-kyselyn suorittaminen
+// Tarkista, onnistuuko SQL-kyselyn suorittaminen
 if ($stmt) {
     // Liitetään parametrit SQL-kyselyyn ja suoritetaan se
-    mysqli_stmt_bind_param($stmt, "siss", $username, $donation_amount, $paymentMethod, $donationDate);
+    mysqli_stmt_bind_param($stmt, "issss", $user_id, $username, $donation_amount, $paymentMethod, $donationDate);
     mysqli_stmt_execute($stmt);
-
     // Suljetaan SQL-kysely
     mysqli_stmt_close($stmt);
 }
@@ -52,6 +49,6 @@ if ($stmt) {
 mysqli_close($yhteys);
 
 // Ohjataan käyttäjä kiitos-sivulle
-header("Location:../pages/thankyou.html");
+header("Location:../pages/thankyou.php");
 exit;
 ?>
