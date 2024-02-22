@@ -9,14 +9,14 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 }
 
 // Tarkista, että kaikki tarvittavat kentät on täytetty
-if (empty($_POST['fName']) || empty($_POST['lName']) || empty($_POST['email']) || empty($_POST['username']) || empty($_POST['password'])) {
+if (empty($_POST['fName']) || empty($_POST['lName']) || empty($_POST['email']) || empty($_POST['username'])) {
     echo "Kaikki kentät ovat pakollisia!";
     exit;
 }
 
 // Päivitä käyttäjän tiedot tietokantaan
-$stmt = $yhteys->prepare("UPDATE users SET fName=?, lName=?, email=?, username=?, password=? WHERE id=?");
-$stmt->bind_param("sssssi", $_POST['fName'], $_POST['lName'], $_POST['email'], $_POST['username'], $_POST['password'], $_SESSION['id']);
+$stmt = $yhteys->prepare("UPDATE users SET fName=?, lName=?, email=?, username=? WHERE user_id=?");
+$stmt->bind_param("ssssi", $_POST['fName'], $_POST['lName'], $_POST['email'], $_POST['username'], $_SESSION['user_id']);
 $stmt->execute();
 
 echo "Tiedot päivitetty onnistuneesti!";

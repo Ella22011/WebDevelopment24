@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("../php/connect.php");
 
 $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? "./donate.php" : "./donatepage.html";
 ?>
@@ -45,31 +46,39 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
     </ul>
 </nav>
 
-    <h2></h2>
-    <form class="form" action="updateprofile.php" method="post">
+<h2></h2>
+    <form class="form" action="../php/updateprofile.php" method="post">
        <h2>Edit Profile</h2> 
        <?php
        // Tarkista, onko käyttäjä kirjautunut sisään
        if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
             // Hae käyttäjän tiedot tietokannasta
             // Voit käyttää samaa tietokantayhteyttä connect.php-tiedostosta
-            $stmt = $yhteys->prepare("SELECT fName, lName, email, username FROM users WHERE id = ?");
-            $stmt->bind_param("i", $_SESSION['id']);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            $user = $result->fetch_assoc();
+            $stmt = $yhteys->prepare("SELECT fName, lName, email, username FROM users WHERE user_id = ?");
+            if ($stmt) {
+                $stmt->bind_param("i", $_SESSION['user_id']);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                if ($result->num_rows > 0) {
+                    $user = $result->fetch_assoc();
 
-            // Näytä käyttäjän tiedot lomakkeella, jotta niitä voi muokata
-            echo '
-            <label for="fName">First Name:</label><br>
-            <input type="text" id="fName" name="fName" value="' . $user['fName'] . '"><br>
-            <label for="lName">Last Name:</label><br>
-            <input type="text" id="lName" name="lName" value="' . $user['lName'] . '"><br>
-            <label for="email">Email:</label><br>
-            <input type="text" id="email" name="email" value="' . $user['email'] . '"><br><br>
-            <label for="username">Username:</label><br>
-            <input type="text" id="username" name="username" value="' . $user['username'] . '"><br>
-            <input type="submit" value="Save Changes">';
+                    // Näytä käyttäjän tiedot lomakkeella, jotta niitä voi muokata
+                    echo '
+                    <label for="fName">First Name:</label><br>
+                    <input type="text" id="fName" name="fName" value="' . $user['fName'] . '"><br>
+                    <label for="lName">Last Name:</label><br>
+                    <input type="text" id="lName" name="lName" value="' . $user['lName'] . '"><br>
+                    <label for="email">Email:</label><br>
+                    <input type="text" id="email" name="email" value="' . $user['email'] . '"><br><br>
+                    <label for="username">Username:</label><br>
+                    <input type="text" id="username" name="username" value="' . $user['username'] . '"><br>
+                    <input type="submit" value="Save Changes">';
+                } else {
+                    echo "No user found.";
+                }
+            } else {
+                echo "Error preparing statement.";
+            }
         }
         ?>
     </form>
