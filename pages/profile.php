@@ -7,11 +7,11 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
 <html lang="en">
 
 <head>
+    <title>Profile</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Cat Distribution System, your local cat adoption shelter.">
     <link rel="icon" type="image/x-icon" href="../images/favicon-32x32.png">
-    <title>Cat Distribution System - About Us</title>
     <link rel="stylesheet" href="../css/styles-ella.css">
 </head>
 
@@ -41,46 +41,41 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
         }
         ?>
     </ul>
-    <form>
-        <input type="text" placeholder="Search" aria-label="Search">
-        <button type="submit">Search</button>
-    </form>
 </nav>
 
-    <main class="homepage">
-        <article id="C1">
-            <h1>About us</h1>
-            <p>We're dedicated to ensuring that every cat finds a loving and caring home. We've witnessed heartwarming
-                instances where stray cats seem to choose or adopt their human companions. In these cases, a cat,
-                whether lost or seeking a new home, finds its way into the hearts of individuals willing to provide
-                care. Veterinary websites offer guidance on what to do when an unknown feline enters your life. Our
-                focus is on creating a platform where cats in need can find their way into loving homes. It's not just
-                about distribution; it's about fostering meaningful connections between cats and the families ready to
-                welcome them with open arms.</p>
-        </article>
-        <img src="../images/websiteDividerPic.png" class="websiteDivider" alt="Pawprints">
-        <article id="C2">
-            <h1>Contact us</h1>
-            <p>
-                Got questions, concerns, or just want to talk cats? We're all ears! Reach out to us using the contact
-                information below:
-            </p>
-            <h3>Contact Information</h3>
-            <p>Email: info@catdistribution.com</p>
-            <p>Phone: 123-456-7890</p>
+    <h2></h2>
+    <form class="form" action="updateprofile.php" method="post">
+       <h2>Edit Profile</h2> 
+       <?php
+       // Tarkista, onko käyttäjä kirjautunut sisään
+       if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+            // Hae käyttäjän tiedot tietokannasta
+            // Voit käyttää samaa tietokantayhteyttä connect.php-tiedostosta
+            $stmt = $yhteys->prepare("SELECT fName, lName, email, username FROM users WHERE id = ?");
+            $stmt->bind_param("i", $_SESSION['id']);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $user = $result->fetch_assoc();
 
-            <h3>Visit Our Office</h3>
-            <p>Address: 123 Cat Street, Kittyville, CA 12345</p>
+            // Näytä käyttäjän tiedot lomakkeella, jotta niitä voi muokata
+            echo '
+            <label for="fName">First Name:</label><br>
+            <input type="text" id="fName" name="fName" value="' . $user['fName'] . '"><br>
+            <label for="lName">Last Name:</label><br>
+            <input type="text" id="lName" name="lName" value="' . $user['lName'] . '"><br>
+            <label for="email">Email:</label><br>
+            <input type="text" id="email" name="email" value="' . $user['email'] . '"><br><br>
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username" value="' . $user['username'] . '"><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br>
+            <input type="submit" value="Save Changes">';
+        }
+        ?>
+    </form>
 
-            <h3>Business Hours</h3>
-            <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
-            <p>Saturday - Sunday: Closed</p>
-        </article>
-    </main>
-
-    <footer class="footer">
-        <a href="#main-nav">Back to top</a>
-    </footer>
+    <h2></h2>
+    <img src="../images/websiteDividerPic.png" class="websiteDivider" alt="Pawprints">
 
 </body>
 
