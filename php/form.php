@@ -35,7 +35,7 @@ if (!empty($missing_fields)) {
 }
 
 // Tallennetaan tiedot tietokantaan
-$sql = "INSERT INTO catdonations (user_id, username, donation_amount, paymentMethod, donationDate)
+$sql = "INSERT INTO catdonations (user_id, username, donation_amount, paymentMethod, donationDate) 
         SELECT u.user_id, ?, ?, ?, ?
         FROM users u
         WHERE u.username = ?";
@@ -45,13 +45,12 @@ $stmt = mysqli_prepare($yhteys, $sql);
 // Tarkistetaan, onnistuuko SQL-kyselyn suorittaminen
 if ($stmt) {
     // Liitetään parametrit SQL-kyselyyn ja suoritetaan se
-    mysqli_stmt_bind_param($stmt, "siss", $username, $donation_amount, $paymentMethod, $donationDate);
+    mysqli_stmt_bind_param($stmt, "siss", $username, $donation_amount, $paymentMethod, $donationDate, $username);
     mysqli_stmt_execute($stmt);
 
     // Suljetaan SQL-kysely
     mysqli_stmt_close($stmt);
 }
-
 
 // Suljetaan tietokantayhteys
 mysqli_close($yhteys);
@@ -60,4 +59,5 @@ mysqli_close($yhteys);
 header("Location:../pages/thankyou.html");
 exit;
 ?>
+
 
