@@ -33,8 +33,8 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 }
 
 ?>
-<h2></h2>
-<form class="form" method="post" action="../php/loginauth.php">
+
+<form class="form2" method="post" action="../php/loginauth.php">
     <h2>Login</h2>
     <label for="username">Username:</label><br>
     <input type="text" id="username" name="username"><br>
@@ -43,7 +43,6 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     <input type="submit" value="Login">
 </form>
 
-<h2></h2>
 <img src="../images/websiteDividerPic.png" class="websiteDivider" alt="Pawprints">
 </body>
 </html>

@@ -54,7 +54,7 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
     <?php include('../php/printprofile.php'); ?>
 </div>
     
-    <form class="form" action="../php/updateprofile.php" method="post">
+    <form class="form" action="updateprofile.php" method="post">
        <h2>Edit Profile</h2> 
        <?php
        // Tarkista, onko käyttäjä kirjautunut sisään
@@ -81,11 +81,14 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
         }
         ?>
     </form>
-    <?php
-    include("../php/dinfo.php");
-    ?>
+    <div class="form">
+    <h2>Your donations</h2>
+        <?php
+        include("../php/dinfo.php");
+        ?>
+    </div>
+</div>
 
-    <h2></h2>
     <img src="../images/websiteDividerPic.png" class="websiteDivider" alt="Pawprints">
 
 </body>
