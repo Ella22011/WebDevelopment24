@@ -37,6 +37,7 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
             echo '<li><a href="../pages/login.php">Log in</a></li>';
         }
         ?>
+        <article><h2><strong>Cat Distribution System</strong></h2></article>
     </ul>
     <form>
       <input type="text" placeholder="Search" aria-label="Search">
