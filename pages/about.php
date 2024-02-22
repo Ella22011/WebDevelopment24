@@ -60,7 +60,7 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
                 about distribution; it's about fostering meaningful connections between cats and the families ready to
                 welcome them with open arms.</p>
         </article>
-<div id="contact-box">
+<div class=".contact-box">
     <article id="C2">
         <h1>Contact us</h1>
         <p>
