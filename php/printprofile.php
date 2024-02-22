@@ -9,16 +9,10 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     $result = $stmt->get_result();
     $user = $result->fetch_assoc();
 
-    // Näytä käyttäjän tiedot lomakkeella, jotta niitä voi muokata
-    echo '
-    <label for="fName">First Name:</label><br>
-    <input type="text" id="fName" name="fName" value="' . $user['fName'] . '"><br>
-    <label for="lName">Last Name:</label><br>
-    <input type="text" id="lName" name="lName" value="' . $user['lName'] . '"><br>
-    <label for="email">Email:</label><br>
-    <input type="text" id="email" name="email" value="' . $user['email'] . '"><br><br>
-    <label for="username">Username:</label><br>
-    <input type="text" id="username" name="username" value="' . $user['username'] . '" readonly><br>
-    <input type="submit" value="Save Changes">';
+    
+    echo '<p>First Name: ' . $user['fName'] . '</p>';
+    echo '<p>Last Name: ' . $user['lName'] . '</p>';
+    echo '<p>Email: ' . $user['email'] . '</p>';
+    echo '<p>Username: ' . $user['username'] . '</p>';
 }
 ?>
