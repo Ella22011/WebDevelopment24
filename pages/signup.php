@@ -2,6 +2,12 @@
 session_start();
 
 $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? "./donate.php" : "./donatepage.html";
+
+// Tarkista, onko käyttäjä kirjautunut sisään, jos on, ohjaa pois rekisteröintisivulta
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+    header("location: ../index.php");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
