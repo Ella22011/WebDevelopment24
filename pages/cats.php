@@ -50,8 +50,8 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
     <p>We kindly request handling adoption matters exclusively via email at <a
         href="mailto:info@catdistribution.com">info@catdistribution.com</a>. The phone line for Cat Distribution is
       primarily reserved for urgent situations involving found cats.</p>
-    <p><strong>Please consider donating, all donations go towards our mission to give homeless cats loving homes. Click
-        <a href="donatepage.html">here </a>to donate today!</strong></p>
+    <p><strong>Please consider donating, all donations go towards our mission to give homeless cats loving homes.</strong>
+    </p>
   </div>
 
   <main class="catspage">
