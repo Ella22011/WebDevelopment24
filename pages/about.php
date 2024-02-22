@@ -58,8 +58,27 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
                 about distribution; it's about fostering meaningful connections between cats and the families ready to
                 welcome them with open arms.</p>
         </article>
-        <article id="C2">
-            <h1>Contact us</h1>
+        <div id="contact-box">
+    <article id="C2">
+        <h1>Contact us</h1>
+        <p>
+            Got questions, concerns, or just want to talk cats? We're all ears! Reach out to us using the contact
+            information below:
+        </p>
+        <h3>Contact Information</h3>
+        <p>Email: info@catdistribution.com</p>
+        <p>Phone: 123-456-7890</p>
+
+        <h3>Visit Our Office</h3>
+        <p>Address: 123 Cat Street, Kittyville, CA 12345</p>
+
+        <h3>Business Hours</h3>
+        <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
+        <p>Saturday - Sunday: Closed</p>
+    </article>
+</div>
+
+
             <p>
                 Got questions, concerns, or just want to talk cats? We're all ears! Reach out to us using the contact
                 information below:
