@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 //Tarkista, onko käyttäjä kirjautunut sisään
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     // Käyttäjä ei ole kirjautunut sisään, ohjataan kirjautumissivulle
@@ -29,7 +27,6 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo "Date: " . $row['donationDate'] . "<br>";
     echo "<br>";
 }
-
 //Sulje tietokantayhteys
 mysqli_close($yhteys);
 ?>

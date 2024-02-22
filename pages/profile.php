@@ -76,6 +76,9 @@ echo '<p>Username: ' . $_SESSION['username'] . '</p>';
         }
         ?>
     </form>
+    <?php
+    include("../php/dinfo.php");
+    ?>
 
     <h2></h2>
     <img src="../images/websiteDividerPic.png" class="websiteDivider" alt="Pawprints">
