@@ -44,7 +44,7 @@ $donate_page = isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ? 
 </nav>
 
     <h2></h2>
-    <form class="form" action="update_profile.php" method="post">
+    <form class="form" action="updateprofile.php" method="post">
        <h2>Edit Profile</h2> 
        <?php
        // Tarkista, onko käyttäjä kirjautunut sisään
