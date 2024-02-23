@@ -48,7 +48,7 @@ if (mysqli_num_rows($result) > 0) {
 
     // Ohjataan käyttäjä lahjoitus sivulle
     header("Location:../pages/donate.php");
-    exit;
+    exit; //exit-funktiolla varmistetaan, että ohjaus tapahtuu ja mitään muuta koodia ei suoriteta tämän jälkeen.
 }
 ?>
 
