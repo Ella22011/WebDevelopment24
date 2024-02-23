@@ -44,7 +44,7 @@ if (mysqli_num_rows($result) > 0) {
     mysqli_close($yhteys);
 
     // Kirjataan käyttäjä automaattisesti sisään
-    $_SESSION['user'] = $username;
+    //$_SESSION['user'] = $username;
 
     // Ohjataan käyttäjä lahjoitus sivulle
     header("Location:../pages/donate.php");
