@@ -35,7 +35,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
         <li><a href="../pages/about.php">About us</a></li>
         <li><a href="../pages/signup.php">Sign up</a></li>
         <?php
-        // Tarkista, onko käyttäjä kirjautunut sisään
+        // Tarkistaa, onko käyttäjä kirjautunut sisään, eli näyttää nämä painikkeen vain, jos on kirjautunut sisään.
         if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
             // Näytä log out -painike
             echo '<li><a href="../php/logout.php">Log out</a></li>';
@@ -44,7 +44,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
             //Näytä "Profile" -linkki
             echo '<li><a href="./profile.php">Profile</a></li>';
         } else {
-            // Näytä kirjaudu sisään -painike
+            // Vie kirjaudu sisään -sivulle
             echo '<li><a href="../pages/login.php">Log in</a></li>';
         }
         ?>
